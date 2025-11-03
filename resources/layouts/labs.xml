@@ -1,0 +1,256 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    
+    <!-- Main menus -->
+    
+    <menu2 id="QRControlMenu" title="@Strings.QRControl">
+        <menu-item id="video"           label="@Strings.Video"/>
+        <menu-item id="protune"         label="@Strings.Protune"/>
+        <menu-item id="extended"        label="@Strings.Extended"/>
+    </menu2>
+
+    <menu2 id="VideoSettings" title="@Strings.Video">
+        <menu-item id="resolution"      label="@Strings.Resolution"/>
+        <menu-item id="framerate"       label="@Strings.Framerate"/>
+        <menu-item id="lens"            label="@Strings.Lens"/>
+        <menu-item id="hypersmooth"     label="@Strings.Hypersmooth"/>
+        <menu-item id="hindsight"       label="@Strings.Hindsight"/>
+    </menu2>
+
+    <menu2 id="ProtuneSettings" title="@Strings.Protune">
+        <menu-item id="audio"           label="@Strings.AudioProcessing"/>
+        <menu-item id="bitrate"         label="@Strings.Bitrate"/>
+        <menu-item id="bitdepth"        label="@Strings.Bitdepth"/>
+        <menu-item id="whitebalance"    label="@Strings.WhiteBalance"/>
+        <menu-item id="color"           label="@Strings.Color"/>
+        <menu-item id="sharpness"       label="@Strings.Sharpness"/>
+        <menu-item id="evcomp"          label="@Strings.EVComp"/>
+        <menu-item id="evlock"          label="@Strings.EVLock"/>
+        <menu-item id="isomin"          label="@Strings.ISOMin"/>
+        <menu-item id="isomax"          label="@Strings.ISOMax"/>
+        <menu-item id="shutterangle"    label="@Strings.ShutterAngle"/>
+    </menu2>
+
+    <menu2 id="ExtendedControls" title="@Strings.Extended">
+        <menu-item id="camera"          label="@Strings.Camera"/>
+        <menu-item id="video"           label="@Strings.Video"/>
+        <menu-item id="audio"           label="@Strings.Audio"/>
+        <menu-item id="labs"            label="@Strings.LabsIO"/>
+    </menu2>
+
+
+    <!-- Video Settings -->
+    
+    <menu2 id="ResolutionPicker" title="@Strings.Resolution">
+        <menu-item id="r1"      label="1080p 16:9"              subLabel="r1"/>
+        <menu-item id="r1T"     label="1440p 4:3"               subLabel="r1T"/>
+        <menu-item id="r1V"     label="1080p 9:16"              subLabel="r1V"/>
+        <menu-item id="r2"      label="2.7K 16:9"               subLabel="r2"/>
+        <menu-item id="r2T"     label="2.7K 4:3"                subLabel="r2T"/>
+        <menu-item id="r3"      label="3K 360°"                 subLabel="r3"/>
+        <menu-item id="r4"      label="4K 16:9"                 subLabel="r4"/>
+        <menu-item id="r4T"     label="4K 4:3"                  subLabel="r4T"/>
+        <menu-item id="r4X"     label="4K 8:7"                  subLabel="r4X"/>
+        <menu-item id="r4S"     label="4K 1:1"                  subLabel="r4S"/>
+        <menu-item id="r4V"     label="4K 9:16"                 subLabel="r4V"/>
+        <menu-item id="r5"      label="5.3K 16:9"               subLabel="r5"/>
+        <menu-item id="r5T"     label="5.3K 4:3"                subLabel="r5T"/>
+        <menu-item id="r5X"     label="5.3K 8:7"                subLabel="r5X"/>
+    </menu2>
+
+    
+    <menu2 id="FrameratePicker" title="@Strings.Framerate">
+        <menu-item id="p24"     label="24 fps"                  subLabel="p24"/>
+        <menu-item id="p25"     label="25 fps"                  subLabel="p25"/>
+        <menu-item id="p30"     label="30 fps"                  subLabel="p30"/>
+        <menu-item id="p50"     label="50 fps"                  subLabel="p50"/>
+        <menu-item id="p60"     label="60 fps"                  subLabel="p60"/>
+        <menu-item id="p100"    label="100 fps"                 subLabel="p100"/>
+        <menu-item id="p120"    label="120 fps"                 subLabel="p120"/>
+        <menu-item id="p200"    label="200 fps"                 subLabel="p200"/>
+        <menu-item id="p240"    label="240 fps"                 subLabel="p240"/>
+    </menu2>
+
+    <menu2 id="LensPicker" title="@Strings.Lens">
+        <menu-item id="fN"      label="@Strings.Narrow"         subLabel="fN"/>
+        <menu-item id="fM"      label="@Strings.Medium"         subLabel="fM"/>
+        <menu-item id="fW"      label="@Strings.Wide"           subLabel="fW"/>
+        <menu-item id="fL"      label="@Strings.Linear"         subLabel="fL"/>
+        <menu-item id="fS"      label="@Strings.Superview"      subLabel="fS"/>
+        <menu-item id="fV"      label="@Strings.Hyperview"      subLabel="fV"/>
+        <menu-item id="fH"      label="@Strings.HorizontalLvl"  subLabel="fH"/>
+        <menu-item id="fX"      label="@Strings.SuperMaxWide"   subLabel="fX"/>
+    </menu2>
+
+    <menu2 id="HypersmoothPicker" title="@Strings.Hypersmooth">
+        <menu-item id="e0"      label="@Strings.Off"            subLabel="e0"/>
+        <menu-item id="e1"      label="@Strings.On"             subLabel="e1"/>
+        <menu-item id="e2"      label="@Strings.High"           subLabel="e2"/>
+        <menu-item id="e3"      label="@Strings.Boost"          subLabel="e3"/>
+        <menu-item id="e4"      label="@Strings.Auto"           subLabel="e4"/>
+    </menu2>
+    
+    <menu2 id="HindsightPicker" title="@Strings.Hindsight">
+        <menu-item id="hS0"     label="@Strings.Off"            subLabel="hS0"/>
+        <menu-item id="hS1"     label="15 sec"                  subLabel="hS1"/>
+        <menu-item id="hS2"     label="30 sec"                  subLabel="hS2"/>
+        <menu-item id="hS5"     label="5 sec"                   subLabel="hS5"/>
+    </menu2>
+
+
+    <!-- Protune Settings -->
+    
+    <menu2 id="AudioPicker" title="@Strings.AudioProcessing">
+        <menu-item id="aL"      label="@Strings.Low"            subLabel="aL"/>
+        <menu-item id="aM"      label="@Strings.Medium"         subLabel="aM"/>
+        <menu-item id="aH"      label="@Strings.High"           subLabel="aH"/>
+    </menu2>
+
+    <menu2 id="BitratePicker" title="@Strings.Bitrate">
+        <menu-item id="b0"      label="@Strings.Standard"       subLabel="b0"/>
+        <menu-item id="b1"      label="@Strings.High"           subLabel="b1"/>
+    </menu2>
+    
+    <menu2 id="BitdepthPicker" title="@Strings.Bitdepth">
+        <menu-item id="d0"      label="8-bit"                   subLabel="d0"/>
+        <menu-item id="d1"      label="10-bit"                  subLabel="d1"/>
+    </menu2>
+
+    <menu2 id="WBPicker" title="@Strings.WhiteBalance">
+        <menu-item id="wA"      label="@Strings.Auto"           subLabel="wA"/>
+        <menu-item id="wN"      label="@Strings.Native"         subLabel="wN"/>
+        <menu-item id="w23"     label="2300K"                   subLabel="w23"/>
+        <menu-item id="w28"     label="2800K"                   subLabel="w28"/>
+        <menu-item id="w32"     label="3200K"                   subLabel="w32"/>
+        <menu-item id="w40"     label="4000K"                   subLabel="w40"/>
+        <menu-item id="w45"     label="4500K"                   subLabel="w45"/>
+        <menu-item id="w50"     label="5000K"                   subLabel="w50"/>
+        <menu-item id="w55"     label="5500K"                   subLabel="w55"/>
+        <menu-item id="w60"     label="6000K"                   subLabel="w60"/>
+        <menu-item id="w65"     label="6500K"                   subLabel="w65"/>
+    </menu2>
+
+    <menu2 id="ColorPicker" title="@Strings.Color">
+        <menu-item id="cF"      label="@Strings.Flat"           subLabel="cF"/>
+        <menu-item id="cG"      label="@Strings.Vibrant"        subLabel="cG"/>
+        <menu-item id="cN"      label="@Strings.Natural"        subLabel="cN"/>
+    </menu2>
+
+    <menu2 id="SharpnessPicker" title="@Strings.Sharpness">
+        <menu-item id="sL"      label="@Strings.Low"            subLabel="sL"/>
+        <menu-item id="sM"      label="@Strings.Medium"         subLabel="sM"/>
+        <menu-item id="sH"      label="@Strings.High"           subLabel="sH"/>
+    </menu2>
+
+    <menu2 id="EVCompPicker" title="@Strings.EVComp">
+        <menu-item id="xm2"     label="-2.0"                    subLabel="x-2"/>
+        <menu-item id="xm1p5"   label="-1.5"                    subLabel="x-1.5"/>
+        <menu-item id="xm1"     label="-1.0"                    subLabel="x-1"/>
+        <menu-item id="xmp5"    label="-0.5"                    subLabel="x-.5"/>
+        <menu-item id="x0"      label="0.0"                     subLabel="x0"/>
+        <menu-item id="xp5"     label="+0.5"                    subLabel="x.5"/>
+        <menu-item id="x1"      label="+1.0"                    subLabel="x1"/>
+        <menu-item id="x1p5"    label="+1.5"                    subLabel="x1.5"/>
+        <menu-item id="x2"      label="+2.0"                    subLabel="x2"/>
+    </menu2>
+
+    <menu2 id="EVLockPicker" title="@Strings.EVLock">
+        <menu-item id="eL0"     label="@Strings.Off"            subLabel="eL0"/>
+        <menu-item id="eL1"     label="@Strings.On"             subLabel="eL1"/>
+        <menu-item id="eL2"     label="2 sec"                   subLabel="eL2"/>
+        <menu-item id="eL3"     label="3 sec"                   subLabel="eL3"/>
+        <menu-item id="eL4"     label="4 sec"                   subLabel="eL4"/>
+        <menu-item id="eL5"     label="5 sec"                   subLabel="eL5"/>
+        <menu-item id="eL6"     label="6 sec"                   subLabel="eL6"/>
+        <menu-item id="eL7"     label="7 sec"                   subLabel="eL7"/>
+        <menu-item id="eL8"     label="8 sec"                   subLabel="eL8"/>
+        <menu-item id="eL9"     label="9 sec"                   subLabel="eL9"/>
+    </menu2>
+
+    <menu2 id="ISOPicker">
+        <menu-item id="_1"      label="100"/>
+        <menu-item id="_2"      label="200"/>
+        <menu-item id="_4"      label="400"/>
+        <menu-item id="_8"      label="800"/>
+        <menu-item id="_16"     label="1600"/>
+        <menu-item id="_32"     label="3200"/>
+        <menu-item id="_64"     label="6400"/>
+    </menu2>
+
+    <!-- TODO: add label if id isn't the default label -->
+    <menu2 id="ShutterAnglePicker" title="@Strings.ShutterAngle">
+        <menu-item id="_360"    label="360"/>
+        <menu-item id="_180"    label="180"/>
+        <menu-item id="_120"    label="120"/>
+        <menu-item id="_90"     label="90"/>
+        <menu-item id="_60"     label="60"/>
+        <menu-item id="_45"     label="45"/>
+        <menu-item id="_22"     label="22"/>
+    </menu2>
+
+
+
+    <!-- Extended controls settings -->
+
+    <menu2 id="XCCameraPicker" title="@Strings.EVLock">
+        <menu-item id="_64BT"   label="64BT"/>
+        <menu-item id="ARCH"    label="ARCH"/>
+        <menu-item id="BERS"    label="BERS"/>
+        <menu-item id="BYPS"    label="BYPS"/>
+        <menu-item id="CBAR"    label="CBAR"/>
+        <menu-item id="HIST"    label="HIST"/>
+        <menu-item id="LBAR"    label="LBAR"/>
+        <menu-item id="LEVL"    label="LEVL"/>
+        <menu-item id="SPED"    label="SPED"/>
+        <menu-item id="SYNC"    label="SYNC"/>
+        <menu-item id="TONE"    label="TONE"/>
+        <menu-item id="TUSB"    label="TUSB"/>
+        <menu-item id="WAKE"    label="WAKE"/>
+        <menu-item id="ZONE"    label="ZONE"/>
+    </menu2>
+
+    <menu2 id="XCVideoPicker" title="@Strings.EVLock">
+        <menu-item id="_24HZ"   label="_24HZ"/>
+        <menu-item id="BITR"    label="BITR"/>
+        <menu-item id="BITH"    label="BITH"/>
+        <menu-item id="BITL"    label="BITL"/>
+        <menu-item id="DLRV"    label="DLRV"/>
+        <menu-item id="EVBS"    label="EVBS"/>
+        <menu-item id="EXPQ"    label="EXPQ"/>
+        <menu-item id="EXPS"    label="EXPS"/>
+        <menu-item id="EXPX"    label="EXPX"/>
+        <menu-item id="EXPN"    label="EXPN"/>
+        <menu-item id="EXPT"    label="EXPT"/>
+        <menu-item id="GCMP"    label="GCMP"/>
+        <menu-item id="LOGB"    label="LOGB"/>
+        <menu-item id="NR01"    label="NR01"/>
+        <menu-item id="PRXY"    label="PRXY"/>
+        <menu-item id="WBLK"    label="WBLK"/>
+        <menu-item id="WIDE"    label="WIDE"/>
+    </menu2>
+
+    <menu2 id="XCAudioPicker" title="@Strings.EVLock">
+        <menu-item id="AUDS"    label="AUDS"/>
+        <menu-item id="DAUD"    label="DAUD"/>
+        <menu-item id="GAIN"    label="GAIN"/>
+        <menu-item id="MUTE"    label="MUTE"/>
+        <menu-item id="SOLO"    label="SOLO"/>
+    </menu2>
+
+    <menu2 id="XCLabsPicker" title="@Strings.EVLock">
+        <menu-item id="DBGL"    label="DBGL"/>
+        <menu-item id="DSPC"    label="DSPC"/>
+        <menu-item id="DSPL"    label="DSPL"/>
+        <menu-item id="FAST"    label="FAST"/>
+        <menu-item id="FEAT"    label="FEAT"/>
+    </menu2>
+
+    <!-- Default QR Settings -->
+
+    <jsonData id="DefaultQRSettings">
+    {
+        "version": 1,
+        "qr_v2": false,
+        "new_xc_prefixes": true
+    }
+    </jsonData>
+</resources>

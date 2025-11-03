@@ -1,3 +1,65 @@
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <string id="AppName">QRCode</string>
+
+    <!-- Main menus -->
+    <string id="QRControl"          translatable="true" >QR Control Settings</string>
+    <string id="Video"              translatable="true" >Video</string>
+    <string id="Protune"            translatable="false">Protune</string>
+    <string id="Extended"           translatable="true" >Extended controls</string>
+    
+    <string id="Resolution"         translatable="true" >Resolution</string>
+    <string id="Framerate"          translatable="true" >Framerate</string>
+    <string id="Lens"               translatable="true" >Lens</string>
+    <string id="Hypersmooth"        translatable="false">Hypersmooth</string>
+    <string id="Hindsight"          translatable="false">Hindsight</string>
+
+    
+    <string id="AudioProcessing"    translatable="true" >Audio processing</string>
+    <string id="Bitrate"            translatable="true" >Bitrate</string>
+    <string id="Bitdepth"           translatable="true" >Bitdepth</string>
+    <string id="WhiteBalance"       translatable="true" >White balance</string>
+    <string id="Color"              translatable="true" >Color profile</string>
+    <string id="Sharpness"          translatable="true" >Sharpness</string>
+    <string id="EVComp"             translatable="true" >EV comp.</string>
+    <string id="EVLock"             translatable="true" >EV lock</string>
+    <string id="ISOMin"             translatable="true" >ISO min</string>
+    <string id="ISOMax"             translatable="true" >ISO max</string>
+    <string id="ShutterAngle"       translatable="true" >Shutter angle</string>
+
+    <string id="Camera"             translatable="true" >Camera</string>
+    <string id="Audio"              translatable="true" >Audio</string>
+    <string id="LabsIO"             translatable="false">Labs I/O</string>
+
+
+    <!-- Generic settings values -->
+    <string id="Off"                translatable="true" >Off</string>
+    <string id="On"                 translatable="true" >On</string>
+    <string id="High"               translatable="true" >High</string>
+    <string id="Standard"           translatable="true" >Standard</string>
+    <string id="Low"                translatable="true" >Low</string>
+    <string id="Auto"               translatable="true" >Auto</string>
+
+
+    <!-- Specific settings -->
+    <!-- Lens -->
+    <string id="Narrow"             translatable="true" >Narrow</string>
+    <string id="Medium"             translatable="true" >Medium</string>
+    <string id="Wide"               translatable="true" >Wide</string>
+    <string id="Linear"             translatable="true" >Linear</string>
+    <string id="Superview"          translatable="false">Superview</string>
+    <string id="Hyperview"          translatable="true" >Hyperview</string>
+    <string id="HorizontalLvl"      translatable="true" >HorizontalLvl</string>
+    <string id="SuperMaxWide"       translatable="true" >SuperMaxWide</string>
+
+    <!-- Hypersmooth --> 
+    <string id="Boost"              translatable="true" >Boost</string>
+
+    <!-- White Balance -->
+    <string id="Native"             translatable="true" >Native</string>
+
+    <!-- Color -->
+    <string id="Flat"               translatable="true" >Flat</string>
+    <string id="Vibrant"            translatable="true" >Vibrant</string>
+    <string id="Natural"            translatable="true" >Natural</string>
+
 </strings>
