@@ -38,6 +38,7 @@
     <string id="Standard"           translatable="true" >Standard</string>
     <string id="Low"                translatable="true" >Low</string>
     <string id="Auto"               translatable="true" >Auto</string>
+    <string id="Unset"              translatable="true" >Unset</string>
 
 
     <!-- Specific settings -->

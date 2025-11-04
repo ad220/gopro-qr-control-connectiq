@@ -167,13 +167,13 @@
     </menu2>
 
     <menu2 id="ISOPicker">
-        <menu-item id="_1"      label="100"/>
-        <menu-item id="_2"      label="200"/>
-        <menu-item id="_4"      label="400"/>
-        <menu-item id="_8"      label="800"/>
-        <menu-item id="_16"     label="1600"/>
-        <menu-item id="_32"     label="3200"/>
-        <menu-item id="_64"     label="6400"/>
+        <menu-item id="_1"      label="100"                     subLabel="1"/>
+        <menu-item id="_2"      label="200"                     subLabel="2"/>
+        <menu-item id="_4"      label="400"                     subLabel="4"/>
+        <menu-item id="_8"      label="800"                     subLabel="8"/>
+        <menu-item id="_16"     label="1600"                    subLabel="16"/>
+        <menu-item id="_32"     label="3200"                    subLabel="32"/>
+        <menu-item id="_64"     label="6400"                    subLabel="64"/>
     </menu2>
 
     <!-- TODO: add label if id isn't the default label -->
@@ -209,7 +209,7 @@
     </menu2>
 
     <menu2 id="XCVideoPicker" title="@Strings.EVLock">
-        <menu-item id="_24HZ"   label="_24HZ"/>
+        <menu-item id="_24HZ"   label="24HZ"/>
         <menu-item id="BITR"    label="BITR"/>
         <menu-item id="BITH"    label="BITH"/>
         <menu-item id="BITL"    label="BITL"/>
@@ -250,7 +250,8 @@
     {
         "version": 1,
         "qr_v2": false,
-        "new_xc_prefixes": true
+        "new_xc_prefixes": true,
+        "default_labs_order": true
     }
     </jsonData>
 </resources>

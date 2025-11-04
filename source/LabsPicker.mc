@@ -21,16 +21,25 @@ class LabsPickerDelegate extends Menu2InputDelegate {
         self.parentMenuId = parentMenuId;
         self.parentFocus = parentFocus;
 
+        // Replace each item's id with its labs value,
+        // add the unset item at the beginning of the menu,
+        // and shift once every item to the menu's end.
         var i=0;
-        var item = menu.getItem(i);
-        while (item!=null) {
-            var id = item.getSubLabel();
-            if (id==null) { id = item.getLabel(); }
-            item.initialize(item.getLabel(), null, id, {});
-            menu.updateItem(item, i);
-
+        var newItem = new MenuItem(Rez.Strings.Unset, null, "", {});
+        var shiftItem = menu.getItem(i);
+        while (shiftItem != null) {
+            menu.updateItem(newItem, i);
+            var id = shiftItem.getSubLabel();
+            if (id==null) { id = shiftItem.getLabel(); }
+            newItem = new MenuItem(shiftItem.getLabel(), null, id, {});
+            
             i++;
-            item = menu.getItem(i);
+            shiftItem = menu.getItem(i);
+        }
+        menu.addItem(newItem);
+
+        if (parentMenuId == :camera) {
+            menu.deleteItem(0);
         }
 
         var focus = menu.findItemById(getApp().qrParams.get(key));
@@ -51,6 +60,11 @@ class LabsPickerDelegate extends Menu2InputDelegate {
                 var index = app.qrCommand.find(prevParam);
                 app.qrCommand = app.qrCommand.substring(null, index) + id 
                     + app.qrCommand.substring(index + prevParam.length(), null);
+                if (id.equals("")) {
+                    app.qrParams.remove(key);
+                } else {
+                    app.qrParams.put(key, id);
+                }
             }
 
             onBack();
