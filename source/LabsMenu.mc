@@ -16,6 +16,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
 
     public function onSelect(item as MenuItem) as Void {
         var menu = null;
+        var key = "";
         var id = item.getId();
         if      (firstItemId == :video) {
             if      (id==:video)        { menu = new Rez.Menus.VideoSettings(); }
@@ -23,24 +24,34 @@ class LabsMenuDelegate extends Menu2InputDelegate {
             else if (id==:extended)     { menu = new Rez.Menus.ExtendedControls(); }
         }
         else if (firstItemId == :resolution) {
-            if      (id==:resolution)   { menu = new Rez.Menus.ResolutionPicker(); }
-            else if (id==:framerate)    { menu = new Rez.Menus.FrameratePicker(); }
-            else if (id==:lens)         { menu = new Rez.Menus.LensPicker(); }
-            else if (id==:hypersmooth)  { menu = new Rez.Menus.HypersmoothPicker(); }
-            else if (id==:hindsight)    { menu = new Rez.Menus.HindsightPicker(); }
+            // Sorting codes start at 0x00, 0x10 for future proof and capture mode
+            if      (id==:resolution)   { menu = new Rez.Menus.ResolutionPicker();      key = "x10res"; }
+            else if (id==:framerate)    { menu = new Rez.Menus.FrameratePicker();       key = "x14fr"; }
+            else if (id==:lens)         { menu = new Rez.Menus.LensPicker();            key = "x18lens"; }
+            else if (id==:hypersmooth)  { menu = new Rez.Menus.HypersmoothPicker();     key = "x1Beis"; }
+            else if (id==:hindsight)    { menu = new Rez.Menus.HindsightPicker();       key = "x20hs"; }
         }
         else if (firstItemId == :audio) {
-            if      (id==:audio)        { menu = new Rez.Menus.AudioPicker(); }
-            else if (id==:bitrate)      { menu = new Rez.Menus.BitratePicker(); }
-            else if (id==:bitdepth)     { menu = new Rez.Menus.BitdepthPicker(); }
-            else if (id==:whitebalance) { menu = new Rez.Menus.WBPicker(); }
-            else if (id==:color)        { menu = new Rez.Menus.ColorPicker(); }
-            else if (id==:sharpness)    { menu = new Rez.Menus.SharpnessPicker(); }
-            else if (id==:evcomp)       { menu = new Rez.Menus.EVCompPicker(); }
-            else if (id==:evlock)       { menu = new Rez.Menus.EVLockPicker(); }
-            else if (id==:isomin)       { menu = new Rez.Menus.ISOPicker(); }
-            else if (id==:isomax)       { menu = new Rez.Menus.ISOPicker(); }
-            else if (id==:shutterangle) { menu = new Rez.Menus.ShutterAnglePicker(); }
+            // Sorting codes start at 0x40, 0x50 for future proof
+            if      (id==:audio)        { menu = new Rez.Menus.AudioPicker();           key = "x50raw"; }
+            else if (id==:bitrate)      { menu = new Rez.Menus.BitratePicker();         key = "x54br"; }
+            else if (id==:bitdepth)     { menu = new Rez.Menus.BitdepthPicker();        key = "x58bd"; }
+            else if (id==:whitebalance) { menu = new Rez.Menus.WBPicker();              key = "x5Bwb"; }
+            else if (id==:color)        { menu = new Rez.Menus.ColorPicker();           key = "x60cp"; }
+            else if (id==:sharpness)    { menu = new Rez.Menus.SharpnessPicker();       key = "x64sharp"; }
+            else if (id==:evcomp)       { menu = new Rez.Menus.EVCompPicker();          key = "x68evc"; }
+            else if (id==:evlock)       { menu = new Rez.Menus.EVLockPicker();          key = "x6Bevl"; }
+            else if (id==:shutterangle) { menu = new Rez.Menus.ShutterAnglePicker();    key = "x72sa"; }
+            else if (id==:isomin)       {
+                menu = new Rez.Menus.ISOPicker();
+                menu.setTitle(Rez.Strings.ISOMin);
+                key = "x71isom";
+            }
+            else if (id==:isomax)       {
+                menu = new Rez.Menus.ISOPicker();
+                menu.setTitle(Rez.Strings.ISOMax);
+                key = "x70isoM";
+            }
         }
         else if (firstItemId == :camera) {
             if      (id==:camera)       { menu = new Rez.Menus.XCCameraPicker(); }
@@ -52,7 +63,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
         if (menu instanceof Menu2) {
             var delegate = firstItemId == :video
                 ? new LabsMenuDelegate(menu)
-                : new LabsPickerDelegate(menu, firstItemId, self.menu.findItemById(id));
+                : new LabsPickerDelegate(menu, key, firstItemId, self.menu.findItemById(id));
             WatchUi.switchToView(menu, delegate, SLIDE_LEFT);
         }
     }
