@@ -48,26 +48,13 @@ class LabsPickerDelegate extends Menu2InputDelegate {
 
     public function onSelect(item as MenuItem) as Void {
         if (parentMenuId != :camera) {
-
-            var app = getApp();
-            var id = item.getId();
-            var prevParam = app.qrParams.get(key) as String?;
-
-            if (prevParam == null) {
-                app.qrParams.put(key, id);
-                app.qrCommand = app.qrCommand + id;
-            } else {
-                var index = app.qrCommand.find(prevParam);
-                app.qrCommand = app.qrCommand.substring(null, index) + id 
-                    + app.qrCommand.substring(index + prevParam.length(), null);
-                if (id.equals("")) {
-                    app.qrParams.remove(key);
-                } else {
-                    app.qrParams.put(key, id);
-                }
-            }
-
+            getApp().setParam(key, item.getId() as String);
             onBack();
+        } else {
+            var key = item.getId() as String;
+            var value = getApp().qrParams.get(key);
+            var view = new NumInputView(key, value);
+            pushView(view, new NumInputDelegate(view), SLIDE_DOWN);
         }
     }
 

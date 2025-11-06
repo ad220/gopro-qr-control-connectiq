@@ -1,0 +1,54 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <layout id="NumInputLayout" foreground="Gfx.COLOR_WHITE" background="Gfx.COLOR_BLACK">
+        <label id="NumInputTitle"   x="50%"   y="3.5%"    font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER"></label>
+
+        <button id="ZeroButton"   class="NumButton" x="23.3%"   y="78%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">0</param>
+        </button>
+
+        <button id="ReturnButton" class="NumButton" x="50%"     y="78%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">-1</param>
+        </button>
+
+        <button id="NineButton"   class="NumButton" x="63.3%"   y="18%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">9</param>
+        </button>
+
+        <button id="HeightButton" class="NumButton" x="36.7%"   y="18%" width="26.6%" height="20%" behavior="onInput">
+            <param name="value">8</param>
+        </button>
+
+        <button id="SevenButton"  class="NumButton" x="10%"     y="18%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">7</param>
+        </button>
+
+        <button id="SixButton"    class="NumButton" x="63.3%"   y="38%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">6</param>
+        </button>
+
+        <button id="FiveButton"   class="NumButton" x="36.7%"   y="38%" width="26.6%" height="20%" behavior="onInput">
+            <param name="value">5</param>
+        </button>
+
+        <button id="FourButton"   class="NumButton" x="10%"     y="38%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">4</param>
+        </button>
+
+        <button id="ThreeButton"  class="NumButton" x="63.3%"   y="58%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">3</param>
+        </button>
+
+        <button id="TwoButton"    class="NumButton" x="36.7%"   y="58%" width="26.6%" height="20%" behavior="onInput">
+            <param name="value">2</param>
+        </button>
+
+        <button id="OneButton"    class="NumButton" x="10%"     y="58%" width="26.7%" height="20%" behavior="onInput">
+            <param name="value">1</param>
+        </button>
+
+        <label id="NumLabel"        x="50%"   y="12%"   font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER">Rez.Strings.Unset</label>
+
+    </layout>
+    
+</resources>
