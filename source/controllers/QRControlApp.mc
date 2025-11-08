@@ -25,6 +25,11 @@ class QRControlApp extends Application.AppBase {
         var menu = new WatchUi.Menu2({:title => Rez.Strings.AppName});
         return [ menu, new MainMenuDelegate(menu) ];
     }
+
+    function returnHome() {
+        var view = getInitialView() as Array;
+        WatchUi.switchToView(view[0], view[1], WatchUi.SLIDE_RIGHT);
+    }
 }
 
 function getApp() as QRControlApp {

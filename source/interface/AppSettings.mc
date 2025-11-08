@@ -51,8 +51,7 @@ class AppSettings extends WatchUi.Menu2InputDelegate {
 
     public function onBack() as Void {
         Application.Storage.setValue("settings", settings);
-        var view = getApp().getInitialView() as Array;
-        switchToView(view[0], view[1], SLIDE_RIGHT);
+        getApp().returnHome();
     }
 
 }

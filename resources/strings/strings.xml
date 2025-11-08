@@ -19,6 +19,11 @@
      <string id="Discard">Discard</string>
 
 
+    <!-- Confirm messages -->
+    <string id="ConfirmBack">Going back\nwill discard\nchanges!\nConfirm?</string>
+    <string id="ConfirmDiscard">Discard this\nQR code\ndata?</string>
+
+
     <!-- QR Control menus -->
     <string id="Labs"               translatable="true" >GoPro Labs settings</string>
 

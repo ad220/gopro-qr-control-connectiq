@@ -83,7 +83,15 @@ class LabsMenuDelegate extends Menu2InputDelegate {
             menu.setFocus(focus);
             WatchUi.switchToView(menu, new LabsMenuDelegate(menu, data), SLIDE_RIGHT);
         } else {
-            Menu2InputDelegate.onBack();
+            pushView(
+                new ConfirmView(Rez.Strings.ConfirmBack),
+                new ConfirmDelegate(method(:cancel)),
+                SLIDE_DOWN
+            );
         }
+    }
+
+    public function cancel() as Void {
+        getApp().returnHome();
     }
 }

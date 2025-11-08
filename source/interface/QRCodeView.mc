@@ -85,8 +85,17 @@ class QRCodeDelegate extends WatchUi.BehaviorDelegate {
         switchToView(new Rez.Menus.QROptions(), new QROptionsDelegate(view.data), SLIDE_LEFT);
         return true;
     }
-
+    
     public function onBack() as Boolean {
+        if (Application.Storage.getValue("paramsOf:"+view.data.command) == null) {
+            onSelect();
+        } else {
+            getApp().returnHome();
+        }
+        return true;
+    }
+
+    public function onMenu() as Boolean {
         return onSelect();
     }
 }
