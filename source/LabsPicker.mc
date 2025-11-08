@@ -4,19 +4,21 @@ import Toybox.WatchUi;
 
 class LabsPickerDelegate extends Menu2InputDelegate {
 
+    private var data as LabsData;
     private var key as String;
     private var parentMenuId as Object;
     private var parentFocus as Number;
 
     public function initialize(
         menu as Menu2,
+        data as LabsData,
         key as String,
         parentMenuId as Object,
         parentFocus as Number
     ) {
-
         Menu2InputDelegate.initialize();
 
+        self.data = data;
         self.key = key;
         self.parentMenuId = parentMenuId;
         self.parentFocus = parentFocus;
@@ -25,13 +27,13 @@ class LabsPickerDelegate extends Menu2InputDelegate {
         // add the unset item at the beginning of the menu,
         // and shift once every item to the menu's end.
         var i=0;
-        var newItem = new MenuItem(Rez.Strings.Unset, null, "", {});
+        var newItem = new MenuItem(Rez.Strings.Unset, null, "", null);
         var shiftItem = menu.getItem(i);
         while (shiftItem != null) {
             menu.updateItem(newItem, i);
             var id = shiftItem.getSubLabel();
             if (id==null) { id = shiftItem.getLabel(); }
-            newItem = new MenuItem(shiftItem.getLabel(), null, id, {});
+            newItem = new MenuItem(shiftItem.getLabel(), null, id, null);
             
             i++;
             shiftItem = menu.getItem(i);
@@ -42,19 +44,19 @@ class LabsPickerDelegate extends Menu2InputDelegate {
             menu.deleteItem(0);
         }
 
-        var focus = menu.findItemById(getApp().qrParams.get(key));
+        var focus = menu.findItemById(data.params.get(key));
         menu.setFocus(focus);
     }
 
     public function onSelect(item as MenuItem) as Void {
         if (parentMenuId != :camera) {
-            getApp().setParam(key, item.getId() as String);
+            data.setParam(key, item.getId() as String);
             onBack();
         } else {
             var key = item.getId() as String;
-            var value = getApp().qrParams.get(key);
+            var value = data.params.get(key);
             var view = new NumInputView(key, value);
-            pushView(view, new NumInputDelegate(view), SLIDE_DOWN);
+            pushView(view, new NumInputDelegate(view, data), SLIDE_DOWN);
         }
     }
 
@@ -66,7 +68,7 @@ class LabsPickerDelegate extends Menu2InputDelegate {
         menu.setFocus(parentFocus);
         
         if (menu instanceof Menu2) {
-            WatchUi.switchToView(menu, new LabsMenuDelegate(menu), SLIDE_RIGHT);
+            WatchUi.switchToView(menu, new LabsMenuDelegate(menu, data), SLIDE_RIGHT);
         }
     }
 }

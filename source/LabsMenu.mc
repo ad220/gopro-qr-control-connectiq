@@ -5,12 +5,14 @@ import Toybox.WatchUi;
 class LabsMenuDelegate extends Menu2InputDelegate {
 
     private var menu as Menu2;
+    private var data as LabsData;
     private var firstItemId as Symbol;
 
-    public function initialize(menu as Menu2) {
+    public function initialize(menu as Menu2, data as LabsData) {
         Menu2InputDelegate.initialize();
 
         self.menu = menu;
+        self.data = data;
         firstItemId = menu.getItem(0).getId() as Symbol;
     }
 
@@ -62,21 +64,21 @@ class LabsMenuDelegate extends Menu2InputDelegate {
 
         if (menu instanceof Menu2) {
             var delegate = firstItemId == :video
-                ? new LabsMenuDelegate(menu)
-                : new LabsPickerDelegate(menu, key, firstItemId, self.menu.findItemById(id));
+                ? new LabsMenuDelegate(menu, data)
+                : new LabsPickerDelegate(menu, data, key, firstItemId, self.menu.findItemById(id));
             WatchUi.switchToView(menu, delegate, SLIDE_LEFT);
         }
     }
 
     public function onBack() as Void {
         if (firstItemId != :video) {
-            var menu = new Rez.Menus.QRControlMenu();
+            var menu = new Rez.Menus.LabsMenu();
             var focus = -1;
             if      (firstItemId == :resolution)    { focus = 0; }
             else if (firstItemId == :audio)         { focus = 1; }
             else if (firstItemId == :camera)        { focus = 2; }
             menu.setFocus(focus);
-            WatchUi.switchToView(menu, new LabsMenuDelegate(menu), SLIDE_RIGHT);
+            WatchUi.switchToView(menu, new LabsMenuDelegate(menu, data), SLIDE_RIGHT);
         } else {
             Menu2InputDelegate.onBack();
         }

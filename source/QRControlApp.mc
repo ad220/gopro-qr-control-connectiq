@@ -6,14 +6,8 @@ using GFMath as GFM;
 
 class QRControlApp extends Application.AppBase {
 
-    var qrCommand as String;
-    var qrParams as Dictionary;
-
     function initialize() {
         AppBase.initialize();
-
-        qrCommand = "";
-        qrParams = {};
     }
 
     // onStart() is called on application start up
@@ -30,25 +24,6 @@ class QRControlApp extends Application.AppBase {
     function getInitialView() as [Views] or [Views, InputDelegates] {
         var menu = new WatchUi.Menu2({:title => Rez.Strings.AppName});
         return [ menu, new MainMenuDelegate(menu) ];
-    }
-
-    function setParam(key as String, value as String) {
-        var prevParam = qrParams.get(key) as String?;
-        if (prevParam == null) {
-            if (!value.equals("")) {
-                qrParams.put(key, value);
-                qrCommand = qrCommand + value;
-            }
-        } else {
-            var index = qrCommand.find(prevParam);
-            qrCommand = qrCommand.substring(null, index) + value 
-                + qrCommand.substring(index + prevParam.length(), null);
-            if (value.equals("")) {
-                qrParams.remove(key);
-            } else {
-                qrParams.put(key, value);
-            }
-        }
     }
 }
 

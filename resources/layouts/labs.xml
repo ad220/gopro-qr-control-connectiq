@@ -2,7 +2,7 @@
     
     <!-- Main menus -->
     
-    <menu2 id="QRControlMenu" title="@Strings.QRControl">
+    <menu2 id="LabsMenu" title="@Strings.Labs">
         <menu-item id="video"           label="@Strings.Video"/>
         <menu-item id="protune"         label="@Strings.Protune"/>
         <menu-item id="extended"        label="@Strings.Extended"/>
@@ -176,7 +176,6 @@
         <menu-item id="_64"     label="6400"                    subLabel="64"/>
     </menu2>
 
-    <!-- TODO: add label if id isn't the default label -->
     <menu2 id="ShutterAnglePicker" title="@Strings.ShutterAngle">
         <menu-item id="_360"    label="360"/>
         <menu-item id="_180"    label="180"/>
@@ -244,14 +243,4 @@
         <menu-item id="FEAT"    label="FEAT"/>
     </menu2>
 
-    <!-- Default QR Settings -->
-
-    <jsonData id="DefaultQRSettings">
-    {
-        "version": 1,
-        "qr_v2": false,
-        "new_xc_prefixes": true,
-        "default_labs_order": true
-    }
-    </jsonData>
 </resources>

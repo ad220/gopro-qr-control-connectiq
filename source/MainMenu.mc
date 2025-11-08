@@ -40,7 +40,9 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
     public function onSelect(item as MenuItem) as Void {
         var id = item.getId();
         if (id.equals("new")) {
-            // TODO: new qrCommand and params and labs menu
+            var data = new LabsData(null);
+            var menu = new Rez.Menus.LabsMenu();
+            switchToView(menu, new LabsMenuDelegate(menu, data), SLIDE_LEFT);
         } else if (id.equals("settings")) {
             var menu = new Rez.Menus.AppSettings();
             switchToView(menu, new AppSettings(menu), SLIDE_LEFT);

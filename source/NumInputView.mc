@@ -99,11 +99,13 @@ class NumInputView extends WatchUi.View {
 class NumInputDelegate extends WatchUi.BehaviorDelegate {
 
     private var view as NumInputView;
+    private var data as LabsData;
     
-    public function initialize(view as NumInputView) {
+    public function initialize(view as NumInputView, data as LabsData) {
         BehaviorDelegate.initialize();
 
         self.view = view;
+        self.data = data;
     }
 
     public function onSelectable(selectableEvent as SelectableEvent) as Boolean {
@@ -123,9 +125,9 @@ class NumInputDelegate extends WatchUi.BehaviorDelegate {
         var key = view.getKey();
         var value = view.getInput();
         if (value == null) {
-            getApp().setParam(key, "");
+            data.setParam(key, "");
         } else {
-            getApp().setParam(key, "*" + key + "=" + value.toString());
+            data.setParam(key, "*" + key + "=" + value.toString());
         }
         return BehaviorDelegate.onBack();
     }

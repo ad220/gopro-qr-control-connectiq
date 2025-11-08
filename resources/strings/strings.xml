@@ -13,7 +13,7 @@
 
 
     <!-- QR Control menus -->
-    <string id="QRControl"          translatable="true" >QR Control Settings</string>
+    <string id="Labs"               translatable="true" >GoPro Labs settings</string>
     <string id="Video"              translatable="true" >Video</string>
     <string id="Protune"            translatable="false">Protune</string>
     <string id="Extended"           translatable="true" >Extended controls</string>
