@@ -1,0 +1,7 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <menu2 id="QROptions" title="@Strings.QROptions">
+        <icon-menu-item id="edit"       label="@Strings.Edit"       icon="@Drawables.Edit"/>
+        <icon-menu-item id="save"       label="@Strings.Save"       icon="@Drawables.Save"/>
+        <icon-menu-item id="discard"    label="@Strings.Discard"    icon="@Drawables.Discard"/>
+    </menu2>
+</resources>

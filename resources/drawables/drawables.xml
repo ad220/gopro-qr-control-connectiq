@@ -5,4 +5,8 @@
     <bitmap id="Settings"   filename="settings.png" scaleX="10%"    dithering="none"    automaticPalette="true"/>
     <bitmap id="QR"         filename="qr.png"       scaleX="10%"    dithering="none"    automaticPalette="true"/>
 
+    <bitmap id="Edit"       filename="edit.png"     scaleX="10%"    dithering="none"    automaticPalette="true"/>
+    <bitmap id="Save"       filename="save.png"     scaleX="10%"    dithering="none"    automaticPalette="true"/>
+    <bitmap id="Discard"    filename="discard.png"  scaleX="10%"    dithering="none"    automaticPalette="true"/>
+
 </drawables>

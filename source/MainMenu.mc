@@ -6,13 +6,14 @@ import Toybox.Application;
 
 class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
 
-    private var qrcodes as Array<String>;
-
     public function initialize(menu as Menu2) {
         Menu2InputDelegate.initialize();
 
-        qrcodes = Application.Storage.getValue("qrcodes") as Array?;
-        if (qrcodes == null) { qrcodes = []; }
+        var qrcodes = Application.Storage.getValue("qrcodes") as Array?;
+        if (qrcodes == null) {
+            qrcodes = [];
+            Application.Storage.setValue("qrcodes", qrcodes);
+        }
 
         var newIcon = new Bitmap({
             :rezId => Rez.Drawables.New,
@@ -47,7 +48,9 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
             var menu = new Rez.Menus.AppSettings();
             switchToView(menu, new AppSettings(menu), SLIDE_LEFT);
         } else {
-            // TODO: new QRCode View with matrix init
+            var data = new LabsData(item.getId());
+            var view = new QRCodeView(data);
+            switchToView(view, new QRCodeDelegate(view), SLIDE_LEFT);
         }
     }
 }

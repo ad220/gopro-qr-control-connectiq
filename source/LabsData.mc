@@ -45,4 +45,29 @@ class LabsData {
             }
         }
     }
+
+    function save() {
+        var qrcodes = Application.Storage.getValue("qrcodes") as Array;
+        if (qrcodes.indexOf(command) == -1) {
+            qrcodes.add(command);
+        }
+
+        var serializedMatrix = []b;
+        for (var i=0; i<matrix.size(); i++) {
+            serializedMatrix.addAll(matrix[i]);
+        }
+
+        Application.Storage.setValue("qrcodes", qrcodes);
+        Application.Storage.setValue("paramsOf:"+command, params);
+        Application.Storage.setValue("matrixOf:"+command, serializedMatrix);
+    }
+
+    function discard() {
+        var qrcodes = Application.Storage.getValue("qrcodes") as Array;
+        qrcodes.remove(command);
+
+        Application.Storage.setValue("qrcodes", qrcodes);
+        Application.Storage.deleteValue("paramsOf:"+command);
+        Application.Storage.deleteValue("matrixOf:"+command);
+    }
 }

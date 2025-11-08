@@ -12,6 +12,13 @@
      <string id="AutoOrder">Use automatic params order</string>
 
 
+    <!-- QR options -->
+     <string id="QROptions">QR Code options</string>
+     <string id="Edit">Edit</string>
+     <string id="Save">Save</string>
+     <string id="Discard">Discard</string>
+
+
     <!-- QR Control menus -->
     <string id="Labs"               translatable="true" >GoPro Labs settings</string>
 

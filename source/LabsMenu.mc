@@ -69,7 +69,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
                 : new LabsPickerDelegate(menu, data, key, firstItemId, self.menu.findItemById(id));
             WatchUi.switchToView(menu, delegate, SLIDE_LEFT);
         } else {
-            WatchUi.switchToView(menu, new BehaviorDelegate(), SLIDE_LEFT);
+            WatchUi.switchToView(menu, new QRCodeDelegate(menu), SLIDE_LEFT);
         }
     }
 

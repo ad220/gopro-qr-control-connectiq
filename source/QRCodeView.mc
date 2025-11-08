@@ -4,9 +4,8 @@ import Toybox.WatchUi;
 
 class QRCodeView extends WatchUi.View {
 
-    private var data as LabsData;
-    private var qr as QRCode;
-    private var matrix as Array?;
+    var data as LabsData;
+    var qr as QRCode;
 
     function initialize(data as LabsData) {
         View.initialize();
@@ -48,7 +47,7 @@ class QRCodeView extends WatchUi.View {
             }
         }
 
-        matrix = qr.getMatrix();
+        var matrix = qr.getMatrix();
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
         dc.clear();
 
@@ -68,5 +67,26 @@ class QRCodeView extends WatchUi.View {
             y += pixelSize;
         }
     }
+}
 
+
+class QRCodeDelegate extends WatchUi.BehaviorDelegate {
+
+    private var view as QRCodeView;
+
+    public function initialize(view as QRCodeView) {
+        BehaviorDelegate.initialize();
+
+        self.view = view;
+    }
+
+    public function onSelect() as Boolean {
+        view.data.matrix = view.qr.getMatrix();
+        switchToView(new Rez.Menus.QROptions(), new QROptionsDelegate(view.data), SLIDE_LEFT);
+        return true;
+    }
+
+    public function onBack() as Boolean {
+        return onSelect();
+    }
 }
