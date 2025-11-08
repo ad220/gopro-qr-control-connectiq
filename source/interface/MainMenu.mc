@@ -23,9 +23,9 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
         menu.addItem(new IconMenuItem(Rez.Strings.NewQR, null, "new", newIcon, null));
 
         for (var i=0; i<qrcodes.size(); i++) {
-            var label = qrcodes[i].substring(null, null);
-            if (label.length()>15) {
-                label = label.substring(null, 12) + "...";
+            var label = qrcodes[i].substring(0, qrcodes[i].length());
+            if (label.length()>8) {
+                label = label.substring(0, 8) + "...";
             }
             menu.addItem(new MenuItem(label, null, qrcodes[i], null));
         }
