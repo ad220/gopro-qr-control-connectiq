@@ -6,6 +6,7 @@
         <menu-item id="video"           label="@Strings.Video"/>
         <menu-item id="protune"         label="@Strings.Protune"/>
         <menu-item id="extended"        label="@Strings.Extended"/>
+        <icon-menu-item id="generate"   label="@Strings.Generate"   icon="@Drawables.QR"/>
     </menu2>
 
     <menu2 id="VideoSettings" title="@Strings.Video">

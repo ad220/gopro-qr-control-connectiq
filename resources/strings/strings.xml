@@ -14,9 +14,11 @@
 
     <!-- QR Control menus -->
     <string id="Labs"               translatable="true" >GoPro Labs settings</string>
+
     <string id="Video"              translatable="true" >Video</string>
     <string id="Protune"            translatable="false">Protune</string>
     <string id="Extended"           translatable="true" >Extended controls</string>
+    <string id="Generate"           translatable="true" >Generate QRCode</string>
     
     <string id="Resolution"         translatable="true" >Resolution</string>
     <string id="Framerate"          translatable="true" >Framerate</string>

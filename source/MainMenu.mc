@@ -15,7 +15,7 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
         if (qrcodes == null) { qrcodes = []; }
 
         var newIcon = new Bitmap({
-            :rezId => Rez.Drawables.QR,
+            :rezId => Rez.Drawables.New,
             :locX => LAYOUT_HALIGN_CENTER,
             :locY => LAYOUT_VALIGN_CENTER
         });
