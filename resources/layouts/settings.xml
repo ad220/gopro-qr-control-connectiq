@@ -1,0 +1,20 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <menu2 id="AppSettings" title="@Strings.Settings">
+        <toggle-menu-item id="qr_v2"            label="@Strings.QRV2"           subLabel="qr_v2"/>
+        <toggle-menu-item id="new_xc_prefx"     label="@Strings.NewXCPrefx"     subLabel="new_xc_prefx"/>
+        <toggle-menu-item id="auto_order"       label="@Strings.AutoOrder"      subLabel="auto_order"/>
+    </menu2>
+
+
+    <!-- Default QR Settings -->
+
+    <jsonData id="DefaultSettings">
+    {
+        "version": 1,
+        "qr_v2": false,
+        "new_xc_prefx": true,
+        "auto_order": true
+    }
+    </jsonData>
+</resources>
