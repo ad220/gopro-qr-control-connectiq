@@ -28,10 +28,8 @@ class QRControlApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        // var menu = new Rez.Menus.QRControlMenu();
-        // return [ menu, new LabsMenuDelegate(menu) ];
-        var menu = new Rez.Menus.AppSettings();
-        return [menu, new AppSettings(menu)];
+        var menu = new WatchUi.Menu2({:title => Rez.Strings.AppName});
+        return [ menu, new MainMenuDelegate(menu) ];
     }
 
     function setParam(key as String, value as String) {

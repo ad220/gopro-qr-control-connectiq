@@ -1,3 +1,7 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="qr.png"/>
+
+    <bitmap id="QR"         filename="qr.png"       scaleX="10%"    dithering="none"    automaticPalette="true"/>
+    <bitmap id="Settings"   filename="settings.png" scaleX="10%"    dithering="none"    automaticPalette="true"/>
+
 </drawables>

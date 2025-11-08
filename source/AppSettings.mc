@@ -35,7 +35,7 @@ class AppSettings extends WatchUi.Menu2InputDelegate {
         var item = menu.getItem(i) as ToggleMenuItem?;
         while (item != null) {
             var id = item.getSubLabel();
-            item.initialize(item.getLabel(), null, id, settings.get(id) as Boolean, {});
+            item.initialize(item.getLabel(), null, id, settings.get(id) as Boolean, null);
             menu.updateItem(item, i);
 
             i++;
@@ -51,7 +51,8 @@ class AppSettings extends WatchUi.Menu2InputDelegate {
 
     public function onBack() as Void {
         Application.Storage.setValue("settings", settings);
-        Menu2InputDelegate.onBack();
+        var view = getApp().getInitialView() as Array;
+        switchToView(view[0], view[1], SLIDE_RIGHT);
     }
 
 }
