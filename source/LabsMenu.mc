@@ -24,6 +24,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
             if      (id==:video)        { menu = new Rez.Menus.VideoSettings(); }
             else if (id==:protune)      { menu = new Rez.Menus.ProtuneSettings(); }
             else if (id==:extended)     { menu = new Rez.Menus.ExtendedControls(); }
+            else if (id==:generate)     { menu = new QRCodeView(data); }
         }
         else if (firstItemId == :resolution) {
             // Sorting codes start at 0x00, 0x10 for future proof and capture mode
@@ -67,6 +68,8 @@ class LabsMenuDelegate extends Menu2InputDelegate {
                 ? new LabsMenuDelegate(menu, data)
                 : new LabsPickerDelegate(menu, data, key, firstItemId, self.menu.findItemById(id));
             WatchUi.switchToView(menu, delegate, SLIDE_LEFT);
+        } else {
+            WatchUi.switchToView(menu, new BehaviorDelegate(), SLIDE_LEFT);
         }
     }
 

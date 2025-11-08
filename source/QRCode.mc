@@ -8,14 +8,14 @@ class QRCode {
 
     typedef QRMatrix as Array<ByteArray>;
 
-    private static const AVAILABLE_MODULES = [26, 44];
-    private static const VERSION_TABLE = {
+    private const AVAILABLE_MODULES = [26, 44];
+    private const VERSION_TABLE = {
         'L' => [19,34],
         'M' => [16,28],
         'Q' => [13,22],
         'H' => [9,16],
     };
-    private static const PROCESSING_STEPS = 10;
+    private const PROCESSING_STEPS = 10;
 
     private var data as String;
     private var ecc as Char;
@@ -28,20 +28,26 @@ class QRCode {
     private var codeMatrix as QRMatrix?;
 
 // TODO: auto-ecc
-    public function initialize(data as String, ecc as Char) {
+    public function initialize(data as String, ecc as Char, pregenMatrix as Array<ByteArray>?) {
         self.data = data;
         self.ecc = ecc;
+        self.codeMatrix = pregenMatrix;
         self.version = 0;
         self.processState = 0;
         self.maskIndex = 0;
         self.penaltyScore = 0;
         
-        var maxDataSizes = VERSION_TABLE.get(ecc) as Array;
-        while(version<maxDataSizes.size() and maxDataSizes[version]<data.length()+2) {version++;}
-        if (version == maxDataSizes.size()) {
-            System.println("Input string too large");
+        if (pregenMatrix == null) {
+            var maxDataSizes = VERSION_TABLE.get(ecc) as Array;
+            while(version<maxDataSizes.size() and maxDataSizes[version]<data.length()+2) {version++;}
+            if (version == maxDataSizes.size()) {
+                System.println("Input string too large");
+            }
+            self.size = 21 + 4*version;
+        } else {
+            self.size = codeMatrix.size();
+            self.processState = PROCESSING_STEPS;
         }
-        self.size = 21 + 4*version;
     }
 
     public function compute() as Numeric {
