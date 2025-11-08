@@ -20,14 +20,22 @@ class QRControlApp extends Application.AppBase {
     function onStop(state as Dictionary?) as Void {
     }
 
-    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
+        if (System.DeviceSettings has :isGlanceModeEnabled and System.getDeviceSettings().isGlanceModeEnabled) {
+            return getHomeMenu();
+        } else {
+            return [ new TitleScreen(), new TitleDelegate() ];
+        }
+    }
+
+    // Return the initial view of your application here
+    function getHomeMenu() as [Views, InputDelegates] {
         var menu = new WatchUi.Menu2({:title => Rez.Strings.AppName});
         return [ menu, new MainMenuDelegate(menu) ];
     }
 
     function returnHome() {
-        var view = getInitialView() as Array;
+        var view = getHomeMenu() as Array;
         WatchUi.switchToView(view[0], view[1], WatchUi.SLIDE_RIGHT);
     }
 }

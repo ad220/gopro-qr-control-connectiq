@@ -36,8 +36,8 @@ class LabsData {
             }
         } else {
             var index = command.find(prevParam);
-            command = command.substring(null, index) + value 
-                + command.substring(index + prevParam.length(), null);
+            command = command.substring(0, index) + value 
+                + command.substring(index + prevParam.length(), command.length());
             if (value.equals("")) {
                 params.remove(key);
             } else {

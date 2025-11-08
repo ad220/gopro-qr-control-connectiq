@@ -45,7 +45,7 @@ class NumInputView extends WatchUi.View {
         View.initialize();
 
         self.title = title;
-        self.input = value==null ? null : value.substring(value.find("=")+1, null).toNumber();
+        self.input = value==null ? null : value.substring(value.find("=")+1, value.length()).toNumber();
     }
 
     public function onLayout(dc as Dc) as Void {
