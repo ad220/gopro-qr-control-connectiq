@@ -20,9 +20,9 @@ class ConfirmView extends WatchUi.View {
 
 class ConfirmDelegate extends WatchUi.BehaviorDelegate {
 
-    private var callback as Method() as Void;
+    private var callback as Null or Method() as Void;
 
-    public function initialize(callback as Method() as Void) {
+    public function initialize(callback as Null or Method() as Void) {
         BehaviorDelegate.initialize();
 
         self.callback = callback;
@@ -35,7 +35,7 @@ class ConfirmDelegate extends WatchUi.BehaviorDelegate {
 
     public function onSelect() as Boolean {
         WatchUi.popView(SLIDE_UP);
-        callback.invoke();
+        if (callback!=null) { callback.invoke(); }
         return true;
     }
 }
