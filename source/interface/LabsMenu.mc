@@ -63,6 +63,12 @@ class LabsMenuDelegate extends Menu2InputDelegate {
             else if (id==:video)        { menu = new Rez.Menus.XCVideoPicker(); }
             else if (id==:audio)        { menu = new Rez.Menus.XCAudioPicker(); }
             else if (id==:labs)         { menu = new Rez.Menus.XCLabsPicker(); }
+            else if (id==:reset)        {
+                data.command = "!RESET" + data.command;
+                data.params.put("RESET", "!RESET");
+                onBack();
+                return;
+            }
         } 
 
         if (menu instanceof Menu2) {

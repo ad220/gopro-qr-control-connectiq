@@ -36,6 +36,7 @@
         <menu-item id="video"           label="@Strings.Video"/>
         <menu-item id="audio"           label="@Strings.Audio"/>
         <menu-item id="labs"            label="@Strings.LabsIO"/>
+        <menu-item id="reset"           label="!RESET"/>
     </menu2>
 
 
