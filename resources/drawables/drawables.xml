@@ -9,4 +9,5 @@
     <bitmap id="Save"       filename="save.png"     scaleX="10%"    dithering="none"    automaticPalette="true"/>
     <bitmap id="Discard"    filename="discard.png"  scaleX="10%"    dithering="none"    automaticPalette="true"/>
 
+    <bitmap id="LoadingQR" x="center" y="center" scaleX="20%" filename="../drawables/qr.png" dithering="none" automaticPalette="true"/>
 </drawables>

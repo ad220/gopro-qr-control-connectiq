@@ -14,12 +14,6 @@ class QRCodeView extends WatchUi.View {
         self.qr = new QRCode(data.command, 'M', data.matrix);
     }
 
-    // Load your resources here
-    function onLayout(dc as Dc) as Void {
-        setLayout(Rez.Layouts.LoadingLayout(dc));
-    }
-
-
     // Update the view
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
@@ -29,22 +23,24 @@ class QRCodeView extends WatchUi.View {
         View.onUpdate(dc);
 
         if (!qr.isReady()) {
-            if (GFMath.GEN_POLYS.size()<29) {
-                GFMath.initNextGenPoly();
-                WatchUi.requestUpdate();
-                return;
-            } 
-
             var width = dc.getWidth();
             var height = dc.getHeight();
-            var progress = qr.compute();
-            if (progress != 1) {
-                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                dc.drawRoundedRectangle(0.25*width, 0.64*height, 0.5*width, 0.06*height, 0xFF);
-                dc.fillRoundedRectangle(0.26*width, 0.65*height, 0.48*width*progress, 0.04*height, 0xFF);
-                WatchUi.requestUpdate();
-                return;
+
+            dc.drawBitmap(0.4*width, 0.4*height, loadResource(Rez.Drawables.LoadingQR));
+            
+            var progress = 0;
+            if (GFMath.GEN_POLYS.size()<29) {
+                GFMath.initNextGenPoly();
+                progress = GFMath.GEN_POLYS.size()/29.0;
+            } else {
+                progress = qr.compute();
             }
+            
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+            dc.drawRoundedRectangle(0.25*width, 0.64*height, 0.5*width, 0.06*height, 0xFF);
+            dc.fillRoundedRectangle(0.26*width, 0.65*height, 0.48*width*progress, 0.04*height, 0xFF);
+            WatchUi.requestUpdate();
+            return;
         }
 
         var matrix = qr.getMatrix();
