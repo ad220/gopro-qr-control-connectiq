@@ -22,12 +22,17 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
         });
         menu.addItem(new IconMenuItem(Rez.Strings.NewQR, null, "new", newIcon, null));
 
+        var qrIcon = new Bitmap({
+            :rezId => Rez.Drawables.QR,
+            :locX => LAYOUT_HALIGN_CENTER,
+            :locY => LAYOUT_VALIGN_CENTER
+        });
         for (var i=0; i<qrcodes.size(); i++) {
             var label = qrcodes[i].substring(0, qrcodes[i].length());
             if (label.length()>8) {
                 label = label.substring(0, 8) + "...";
             }
-            menu.addItem(new MenuItem(label, null, qrcodes[i], null));
+            menu.addItem(new IconMenuItem(label, null, qrcodes[i], qrIcon, null));
         }
 
         var settingsIcon = new Bitmap({
