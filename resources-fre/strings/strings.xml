@@ -1,0 +1,88 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">QR Control</string>
+
+    <string id="Start">Démarrer</string>
+
+    <!-- Main menu -->
+    <string id="NewQR">Nouveau QR code</string>
+    <string id="Settings">Paramètres de l'application</string>
+
+    
+    <!-- App settings -->
+     <string id="QRV1">Forcer des codes plus petits</string>
+     <string id="NewXCPrefx">Utiliser les nouveaux préfixes</string>
+     <string id="AutoOrder">Ordre des paramètres auto.</string>
+
+
+    <!-- QR options -->
+     <string id="QROptions">Options du QR code</string>
+     <string id="Edit">Modifier</string>
+     <string id="Save">Enregistrer</string>
+     <string id="Discard">Supprimer</string>
+
+
+    <!-- Confirm messages -->
+    <string id="ConfirmBack">Vous perdrez\nvos modifications !\nConfirmer ?</string>
+    <string id="ConfirmDiscard">Supprimer les\n les données de ce\n QR code ?</string>
+
+
+    <!-- QR Control menus -->
+    <string id="Labs"               translatable="true" >Paramètres GoPro Labs</string>
+
+    <string id="Video"              translatable="true" >Vidéo</string>
+    <string id="Extended"           translatable="true" >Contrôles étendus</string>
+    <string id="Generate"           translatable="true" >Générer le QR code</string>
+    
+    <string id="Resolution"         translatable="true" >Résolution</string>
+    <string id="Framerate"          translatable="true" >Fréquence d'image</string>
+    <string id="Lens"               translatable="true" >Objectif</string>
+
+    
+    <string id="AudioProcessing"    translatable="true" >Traitement audio</string>
+    <string id="Bitrate"            translatable="true" >Débit</string>
+    <string id="Bitdepth"           translatable="true" >Profondeur des couleurs</string>
+    <string id="WhiteBalance"       translatable="true" >Balance des blancs</string>
+    <string id="Color"              translatable="true" >Profil de couleur</string>
+    <string id="Sharpness"          translatable="true" >Netteté</string>
+    <string id="EVComp"             translatable="true" >Compens. d'expos.</string>
+    <string id="EVLock"             translatable="true" >Blocage d'expos.</string>
+    <string id="ISOMin"             translatable="true" >ISO min</string>
+    <string id="ISOMax"             translatable="true" >ISO max</string>
+    <string id="ShutterAngle"       translatable="true" >Angle d'obturat.</string>
+
+    <string id="Camera"             translatable="true" >Caméra</string>
+    <string id="Audio"              translatable="true" >Audio</string>
+    <string id="LabsIO"             translatable="true" >E/S Labs</string>
+
+
+    <!-- Generic settings values -->
+    <string id="Off"                translatable="true" >Désactivé</string>
+    <string id="On"                 translatable="true" >Activé</string>
+    <string id="High"               translatable="true" >Haut</string>
+    <string id="Standard"           translatable="true" >Standard</string>
+    <string id="Low"                translatable="true" >Bas</string>
+    <string id="Auto"               translatable="true" >Auto</string>
+    <string id="Unset"              translatable="true" >Non défini</string>
+
+
+    <!-- Specific settings -->
+    <!-- Lens -->
+    <string id="Narrow"             translatable="true" >Étroit</string>
+    <string id="Medium"             translatable="true" >Moyen</string>
+    <string id="Wide"               translatable="true" >Large</string>
+    <string id="Linear"             translatable="true" >Linéaire</string>
+    <string id="HorizontalLvl"      translatable="true" >Nivel. d'horizon</string>
+    <string id="SuperMaxWide"       translatable="true" >SuperMax Large</string>
+
+    <!-- Hypersmooth --> 
+    <string id="Boost"              translatable="true" >Boost</string>
+
+    <!-- White Balance -->
+    <string id="Native"             translatable="true" >Native</string>
+
+    <!-- Color -->
+    <string id="Flat"               translatable="true" >Plat</string>
+    <string id="Vibrant"            translatable="true" >Vibrant</string>
+    <string id="Natural"            translatable="true" >Naturel</string>
+
+</strings>

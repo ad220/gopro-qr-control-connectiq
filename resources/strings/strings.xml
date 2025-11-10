@@ -9,7 +9,7 @@
 
     
     <!-- App settings -->
-     <string id="QRV2">Allow larger codes</string>
+     <string id="QRV1">Force smallest code</string>
      <string id="NewXCPrefx">Use new XC prefixes</string>
      <string id="AutoOrder">Use automatic params order</string>
 
@@ -55,7 +55,7 @@
 
     <string id="Camera"             translatable="true" >Camera</string>
     <string id="Audio"              translatable="true" >Audio</string>
-    <string id="LabsIO"             translatable="false">Labs I/O</string>
+    <string id="LabsIO"             translatable="true" >Labs I/O</string>
 
 
     <!-- Generic settings values -->
@@ -75,7 +75,7 @@
     <string id="Wide"               translatable="true" >Wide</string>
     <string id="Linear"             translatable="true" >Linear</string>
     <string id="Superview"          translatable="false">Superview</string>
-    <string id="Hyperview"          translatable="true" >Hyperview</string>
+    <string id="Hyperview"          translatable="false">Hyperview</string>
     <string id="HorizontalLvl"      translatable="true" >HorizontalLvl</string>
     <string id="SuperMaxWide"       translatable="true" >SuperMaxWide</string>
 

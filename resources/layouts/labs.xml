@@ -191,7 +191,7 @@
 
     <!-- Extended controls settings -->
 
-    <menu2 id="XCCameraPicker" title="@Strings.EVLock">
+    <menu2 id="XCCameraPicker" title="@Strings.Camera">
         <menu-item id="_64BT"   label="64BT"/>
         <menu-item id="ARCH"    label="ARCH"/>
         <menu-item id="BERS"    label="BERS"/>
@@ -208,7 +208,7 @@
         <menu-item id="ZONE"    label="ZONE"/>
     </menu2>
 
-    <menu2 id="XCVideoPicker" title="@Strings.EVLock">
+    <menu2 id="XCVideoPicker" title="@Strings.Video">
         <menu-item id="_24HZ"   label="24HZ"/>
         <menu-item id="BITR"    label="BITR"/>
         <menu-item id="BITH"    label="BITH"/>
@@ -228,7 +228,7 @@
         <menu-item id="WIDE"    label="WIDE"/>
     </menu2>
 
-    <menu2 id="XCAudioPicker" title="@Strings.EVLock">
+    <menu2 id="XCAudioPicker" title="@Strings.Audio">
         <menu-item id="AUDS"    label="AUDS"/>
         <menu-item id="DAUD"    label="DAUD"/>
         <menu-item id="GAIN"    label="GAIN"/>
@@ -236,7 +236,7 @@
         <menu-item id="SOLO"    label="SOLO"/>
     </menu2>
 
-    <menu2 id="XCLabsPicker" title="@Strings.EVLock">
+    <menu2 id="XCLabsPicker" title="@Strings.LabsIO">
         <menu-item id="DBGL"    label="DBGL"/>
         <menu-item id="DSPC"    label="DSPC"/>
         <menu-item id="DSPL"    label="DSPL"/>
