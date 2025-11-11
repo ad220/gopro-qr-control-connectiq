@@ -10,17 +10,22 @@ class QRCode {
 
     private const AVAILABLE_MODULES = [26, 44];
     private const VERSION_TABLE = {
-        'L' => [19,34],
-        'M' => [16,28],
-        'Q' => [13,22],
-        'H' => [9,16],
+        9   => "H1",
+        13  => "Q1",
+        16  => "M1",
+        19  => "L1",
+        22  => "Q2",
+        28  => "M2",
+        34  => "L2"
     };
+
     private const PROCESSING_STEPS = 10;
 
     private var data as String;
     private var ecc as Char;
     private var size as Number;
     private var version as Number;
+    private var maxCodewords as Number;
     private var processState as Number;
     private var maskIndex as Number;
     private var penaltyScore as Number;
@@ -28,26 +33,34 @@ class QRCode {
     private var codeMatrix as QRMatrix?;
 
 // TODO: auto-ecc
-    public function initialize(data as String, ecc as Char, pregenMatrix as Array<ByteArray>?) {
+    public function initialize(data as String, ecc as Char?, pregenMatrix as Array<ByteArray>?) {
         self.data = data;
         self.ecc = ecc;
         self.codeMatrix = pregenMatrix;
         self.version = 0;
+        self.maxCodewords = 0;
         self.processState = 0;
         self.maskIndex = 0;
         self.penaltyScore = 0;
         
         if (pregenMatrix == null) {
-            var maxDataSizes = VERSION_TABLE.get(ecc) as Array;
-            while(version<maxDataSizes.size() and maxDataSizes[version]<data.length()+2) {version++;}
-            if (version == maxDataSizes.size()) {
-                System.println("Input string too large");
-            }
+            if (ecc == null) { setBestEcc(); }
+            self.version = data.length()<20 ? 0 : 1;
             self.size = 21 + 4*version;
         } else {
             self.size = codeMatrix.size();
             self.processState = PROCESSING_STEPS;
         }
+    }
+
+    private function setBestEcc() as Void {
+        var keys = VERSION_TABLE.keys();
+        keys.sort(null);
+        var i = 0;
+        while (keys[i] as Number < data.length()) { i++; }
+        maxCodewords = keys[i] as Number;
+        var eccVersion = VERSION_TABLE.get(keys[i]) as String;
+        ecc = eccVersion.toCharArray()[0];
     }
 
     public function compute() as Numeric {
@@ -88,7 +101,7 @@ class QRCode {
             codewords.add(bytes[i].toNumber() & 0x0F << 4);
         }
 
-        while (codewords.size()<(VERSION_TABLE.get(ecc) as Array)[version]) {
+        while (codewords.size()<maxCodewords) {
             codewords.add(codewords.size() & 1 ? 236 : 17);
         }
         

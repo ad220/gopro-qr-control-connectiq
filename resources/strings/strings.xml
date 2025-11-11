@@ -23,6 +23,7 @@
 
     <!-- Confirm messages -->
     <string id="ConfirmNull">Can't generate\nQR, the command\nis empty.</string>
+    <string id="ConfirmLong">Can't generate\nQR, the command\nis too long.</string>
     <string id="ConfirmBack">Going back\nwill discard\nchanges!\nConfirm?</string>
     <string id="ConfirmDiscard">Discard this\nQR code\ndata?</string>
 

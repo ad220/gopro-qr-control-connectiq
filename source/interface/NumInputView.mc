@@ -127,7 +127,8 @@ class NumInputDelegate extends WatchUi.BehaviorDelegate {
         if (value == null) {
             data.setParam(key, "");
         } else {
-            data.setParam(key, "*" + key + "=" + value.toString());
+            var prefix = AppSettings.get("new_xc_prefx") ? "*" : "!M";
+            data.setParam(key, prefix + key + "=" + value.toString());
         }
         return BehaviorDelegate.onBack();
     }

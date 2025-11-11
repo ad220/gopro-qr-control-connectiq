@@ -23,7 +23,7 @@ class AppSettings extends WatchUi.Menu2InputDelegate {
         }
     }
 
-    public static function getSettings(key as String) {
+    public static function get(key as String) {
         return settings.get(key);
     }
 

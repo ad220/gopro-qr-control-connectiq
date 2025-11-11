@@ -11,7 +11,7 @@ class QRCodeView extends WatchUi.View {
         View.initialize();
 
         self.data = data;
-        self.qr = new QRCode(data.command, 'M', data.matrix);
+        self.qr = new QRCode(data.command, null, data.matrix);
     }
 
     // Update the view

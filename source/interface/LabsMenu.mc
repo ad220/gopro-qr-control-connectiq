@@ -25,37 +25,52 @@ class LabsMenuDelegate extends Menu2InputDelegate {
             else if (id==:protune)      { menu = new Rez.Menus.ProtuneSettings(); }
             else if (id==:extended)     { menu = new Rez.Menus.ExtendedControls(); }
             else if (id==:generate)     {
-                menu = data.command.equals("") ? new ConfirmView(Rez.Strings.ConfirmNull) : new QRCodeView(data);
+                if (data.command.equals("")) {
+                    menu = new ConfirmView(Rez.Strings.ConfirmNull);
+                } else if (data.command.length() > (AppSettings.get("force_qr_v1") ? 19 : 34)) {
+                    menu = new ConfirmView(Rez.Strings.ConfirmLong);
+                } else {
+                    if (AppSettings.get("auto_order")) {
+                        data.command = "";
+                        var keys = data.params.keys();
+                        keys.sort(null);
+                        for (var i=0; i<keys.size(); i++) {
+                            data.command += data.params.get(keys[i]);
+                        }
+                    }
+
+                    menu = new QRCodeView(data);
+                }
             }
         }
         else if (firstItemId == :resolution) {
             // Sorting codes start at 0x00, 0x10 for future proof and capture mode
-            if      (id==:resolution)   { menu = new Rez.Menus.ResolutionPicker();      key = "x10res"; }
-            else if (id==:framerate)    { menu = new Rez.Menus.FrameratePicker();       key = "x14fr"; }
-            else if (id==:lens)         { menu = new Rez.Menus.LensPicker();            key = "x18lens"; }
-            else if (id==:hypersmooth)  { menu = new Rez.Menus.HypersmoothPicker();     key = "x1Beis"; }
-            else if (id==:hindsight)    { menu = new Rez.Menus.HindsightPicker();       key = "x20hs"; }
+            if      (id==:resolution)   { menu = new Rez.Menus.ResolutionPicker();      key = "$10res"; }
+            else if (id==:framerate)    { menu = new Rez.Menus.FrameratePicker();       key = "$14fr"; }
+            else if (id==:lens)         { menu = new Rez.Menus.LensPicker();            key = "$18lens"; }
+            else if (id==:hypersmooth)  { menu = new Rez.Menus.HypersmoothPicker();     key = "$1Beis"; }
+            else if (id==:hindsight)    { menu = new Rez.Menus.HindsightPicker();       key = "$20hs"; }
         }
         else if (firstItemId == :audio) {
             // Sorting codes start at 0x40, 0x50 for future proof
-            if      (id==:audio)        { menu = new Rez.Menus.AudioPicker();           key = "x50raw"; }
-            else if (id==:bitrate)      { menu = new Rez.Menus.BitratePicker();         key = "x54br"; }
-            else if (id==:bitdepth)     { menu = new Rez.Menus.BitdepthPicker();        key = "x58bd"; }
-            else if (id==:whitebalance) { menu = new Rez.Menus.WBPicker();              key = "x5Bwb"; }
-            else if (id==:color)        { menu = new Rez.Menus.ColorPicker();           key = "x60cp"; }
-            else if (id==:sharpness)    { menu = new Rez.Menus.SharpnessPicker();       key = "x64sharp"; }
-            else if (id==:evcomp)       { menu = new Rez.Menus.EVCompPicker();          key = "x68evc"; }
-            else if (id==:evlock)       { menu = new Rez.Menus.EVLockPicker();          key = "x6Bevl"; }
-            else if (id==:shutterangle) { menu = new Rez.Menus.ShutterAnglePicker();    key = "x72sa"; }
+            if      (id==:audio)        { menu = new Rez.Menus.AudioPicker();           key = "$50raw"; }
+            else if (id==:bitrate)      { menu = new Rez.Menus.BitratePicker();         key = "$54br"; }
+            else if (id==:bitdepth)     { menu = new Rez.Menus.BitdepthPicker();        key = "$58bd"; }
+            else if (id==:whitebalance) { menu = new Rez.Menus.WBPicker();              key = "$5Bwb"; }
+            else if (id==:color)        { menu = new Rez.Menus.ColorPicker();           key = "$60cp"; }
+            else if (id==:sharpness)    { menu = new Rez.Menus.SharpnessPicker();       key = "$64sharp"; }
+            else if (id==:evcomp)       { menu = new Rez.Menus.EVCompPicker();          key = "$68evc"; }
+            else if (id==:evlock)       { menu = new Rez.Menus.EVLockPicker();          key = "$6Bevl"; }
+            else if (id==:shutterangle) { menu = new Rez.Menus.ShutterAnglePicker();    key = "$72sa"; }
             else if (id==:isomin)       {
                 menu = new Rez.Menus.ISOPicker();
                 menu.setTitle(Rez.Strings.ISOMin);
-                key = "x71isom";
+                key = "$71isom";
             }
             else if (id==:isomax)       {
                 menu = new Rez.Menus.ISOPicker();
                 menu.setTitle(Rez.Strings.ISOMax);
-                key = "x70isoM";
+                key = "$70isoM";
             }
         }
         else if (firstItemId == :camera) {
@@ -65,7 +80,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
             else if (id==:labs)         { menu = new Rez.Menus.XCLabsPicker(); }
             else if (id==:reset)        {
                 data.command = "!RESET" + data.command;
-                data.params.put("RESET", "!RESET");
+                data.params.put("!RESET", "!RESET");
                 onBack();
                 return;
             }
@@ -77,7 +92,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
                 : new LabsPickerDelegate(menu, data, key, firstItemId, self.menu.findItemById(id));
             WatchUi.switchToView(menu, delegate, SLIDE_LEFT);
         } else {
-            if (data.command.equals("")) {
+            if (menu instanceof ConfirmView) {
                 pushView(menu, new ConfirmDelegate(null), SLIDE_UP);
             } else {
                 switchToView(menu, new QRCodeDelegate(menu), SLIDE_LEFT);

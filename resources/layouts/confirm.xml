@@ -1,6 +1,6 @@
 <resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <layout id="ConfirmLayout">
-        <label id="ConfirmMessage" x="50%" y="40%" font="Gfx.FONT_TINY" justification="Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER"/>
+        <label id="ConfirmMessage" x="50%" y="45%" font="Gfx.FONT_TINY" justification="Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER"/>
         <bitmap id="ConfirmIcon" x="45%" y="80%" filename="../drawables/confirm.png" scaleX="10%" dithering="none" automaticPalette="true"></bitmap>
     </layout>
 </resources>
