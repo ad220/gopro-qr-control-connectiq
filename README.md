@@ -1,5 +1,5 @@
 # <p align="center"> <br/> <img src="doc/logo128.png" alt="remote icon" width="128"/> <br/> <br/> GoPro QR Control for Garmin<br/> </p>
-A ConnectIQ widget which can generate QR codes to control a Labs enabled GoPro camera (more info for GoPro Labs on the [official website](https://gopro.com/fr/fr/info/gopro-labs) and their [GitHub page](https://gopro.github.io/labs/control/)). 
+A ConnectIQ widget which can generate QR codes to control a Labs enabled GoPro camera (more info about GoPro Labs on the [official website](https://gopro.com/fr/fr/info/gopro-labs) and their [GitHub page](https://gopro.github.io/labs/control/)). Heavily inspired from the QR Control app on Android and Massimo Artizzu's "Let's develop a QR Code Generator" [blog post series](https://dev.to/maxart2501/let-s-develop-a-qr-code-generator-part-i-basic-concepts-510a)
 
 
 ## Features
@@ -11,7 +11,7 @@ A ConnectIQ widget which can generate QR codes to control a Labs enabled GoPro c
 
 
 ## Installation
-The widget is available on the [Garmin Connect IQ store](). You can install it directly from your Garmin Connect app on your smartphone.
+The widget is available on the [Garmin Connect IQ store](https://apps.garmin.com/apps/0bffb1af-6f08-4cd5-bae0-3dc82edbb6ff). You can install it directly from your Garmin Connect app on your smartphone.
 
 
 ## How to use it
