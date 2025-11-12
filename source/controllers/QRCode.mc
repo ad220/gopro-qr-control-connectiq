@@ -245,7 +245,7 @@ class QRCode {
         }
     }
 
-    private function placePatterns(matrix) {
+    private function placePatterns(matrix as QRMatrix) {
         fillRectangle(matrix, 0, 7, 9, 9, 0);
         fillRectangle(matrix, 7, 0, 9, 7, 0);
         fillRectangle(matrix, size-8, 0, size-7, 8, 0);
