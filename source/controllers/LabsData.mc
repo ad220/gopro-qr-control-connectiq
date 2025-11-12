@@ -28,7 +28,45 @@ class LabsData {
 
     
     function setParam(key as String, value as String) {
+        var paramCode = key.substring(1,3);
+        key = "707172".find(paramCode) == null ? key : "$73iso";
         var prevParam = params.get(key) as String?;
+
+        if (key.equals("$73iso")) {
+            // ISO HELLL !!!
+            prevParam = params.get(key) as String?;
+            var saIdx = prevParam != null ? prevParam.find("S") : null; 
+            var minIdx = prevParam != null ? prevParam.find("M") : null;
+
+            var max = "64";
+            if (paramCode.equals("70")) {
+                max = value.length() ? value : max;
+            } else if (prevParam != null) {
+                max = prevParam.substring(1, minIdx != null ? minIdx : (saIdx != null ? saIdx : prevParam.length()));
+            }
+
+            var min = null;
+            if (paramCode.equals("71")) {
+                min = value.length() ? value : null;
+            } else if (prevParam != null and minIdx != null) {
+                min = prevParam.substring(minIdx+1, (saIdx != null ? saIdx : prevParam.length()));
+            }
+            
+            var angle = null;
+            if (paramCode.equals("72")) {
+                angle = value.length() ? value : null;
+            } else if (prevParam != null and saIdx != null) {
+                angle = prevParam.substring(saIdx+1, prevParam.length());
+            }
+
+            value = "i"+max;
+            if (min != null)    { value += "M"+min; }
+            if (angle != null)  { value += "S"+angle; }
+
+            if (value.equals("i64")) { value = ""; }
+            System.println(value);
+        }
+
         if (prevParam == null) {
             if (!value.equals("")) {
                 params.put(key, value);
