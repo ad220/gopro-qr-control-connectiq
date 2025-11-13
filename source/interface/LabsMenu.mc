@@ -30,7 +30,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
                 } else if (data.command.length() > (AppSettings.get("force_qr_v1") ? 19 : 34)) {
                     menu = new ConfirmView(Rez.Strings.ConfirmLong);
                 } else {
-                    if (AppSettings.get("auto_order")) {
+                    if (AppSettings.get("auto_order") and Array has :sort) {
                         data.command = "";
                         var keys = data.params.keys();
                         keys.sort(null);

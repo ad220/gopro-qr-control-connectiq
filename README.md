@@ -30,5 +30,8 @@ All the different parameters should be described in [doc/LABS.md](doc/LABS.md), 
 
 ## Changelog
 
+### v1.1
+- Fix logo color and crash on QR code generation for older devices
+
 ### v1.0
 - First version of the app

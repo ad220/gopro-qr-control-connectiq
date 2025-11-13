@@ -21,7 +21,7 @@ class TitleScreen extends WatchUi.View {
         dc.fillRoundedRectangle(0.52*width, 0.28*height, 0.1*width, 0.1*height, 0.023*width);
 
         
-        dc.setColor(0x0055FF, Graphics.COLOR_BLACK);
+        dc.setColor(0x0055AA, Graphics.COLOR_BLACK);
         dc.fillRoundedRectangle(0.38*width, 0.42*height, 0.1*width, 0.1*height, 0.023*width);
     }
 }
