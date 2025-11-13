@@ -8,16 +8,9 @@ class QRCode {
 
     typedef QRMatrix as Array<ByteArray>;
 
-    private const AVAILABLE_MODULES = [26, 44];
-    private const VERSION_TABLE = {
-        9   => "H1",
-        13  => "Q1",
-        16  => "M1",
-        19  => "L1",
-        22  => "Q2",
-        28  => "M2",
-        34  => "L2"
-    };
+    private const AVAILABLE_MODULES = [26, 44]b;
+    private const CODEWORDS_TABLE   = [  9,  13,  16,  19,  22,  28,  34]b;
+    private const ECC_TABLE         = ['H', 'Q', 'M', 'L', 'Q', 'M', 'L']b;
 
     private const PROCESSING_STEPS = 10;
 
@@ -54,13 +47,10 @@ class QRCode {
     }
 
     private function setBestEcc() as Void {
-        var keys = VERSION_TABLE.keys();
-        keys.sort(null);
         var i = 0;
-        while (keys[i] as Number < data.length()) { i++; }
-        maxCodewords = keys[i] as Number;
-        var eccVersion = VERSION_TABLE.get(keys[i]) as String;
-        ecc = eccVersion.toCharArray()[0];
+        while (CODEWORDS_TABLE[i] < data.length()) { i++; }
+        maxCodewords = CODEWORDS_TABLE[i];
+        ecc = ECC_TABLE[i].toChar();
     }
 
     public function compute() as Numeric {
