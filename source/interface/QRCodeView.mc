@@ -1,6 +1,7 @@
 import Toybox.Lang;
 import Toybox.Graphics;
 import Toybox.WatchUi;
+import Toybox.Timer;
 
 class QRCodeView extends WatchUi.View {
 
@@ -12,6 +13,10 @@ class QRCodeView extends WatchUi.View {
 
         self.data = data;
         self.qr = new QRCode(data.command, null, data.matrix);
+    }
+
+    function update() as Void {
+        requestUpdate();
     }
 
     // Update the view
@@ -39,7 +44,13 @@ class QRCodeView extends WatchUi.View {
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             dc.drawRoundedRectangle(0.25*width, 0.64*height, 0.5*width, 0.06*height, 0xFF);
             dc.fillRoundedRectangle(0.26*width, 0.65*height, 0.48*width*progress, 0.04*height, 0xFF);
-            WatchUi.requestUpdate();
+
+            if (Array has :sort) {
+                requestUpdate();
+            } else {
+                var timer = new Timer.Timer();
+                timer.start(method(:update), 500, false);
+            }
             return;
         }
 
@@ -77,8 +88,10 @@ class QRCodeDelegate extends WatchUi.BehaviorDelegate {
     }
 
     public function onSelect() as Boolean {
-        view.data.matrix = view.qr.getMatrix();
-        switchToView(new Rez.Menus.QROptions(), new QROptionsDelegate(view.data), SLIDE_LEFT);
+        if (view.qr.isReady()) {
+            view.data.matrix = view.qr.getMatrix();
+            switchToView(new Rez.Menus.QROptions(), new QROptionsDelegate(view.data), SLIDE_LEFT);
+        }
         return true;
     }
     
