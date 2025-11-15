@@ -30,6 +30,10 @@ All the different parameters should be described in [doc/LABS.md](doc/LABS.md), 
 
 ## Changelog
 
+### v1.2
+- Fix removing a saved qr code
+- Fix qr code loading for older devices
+
 ### v1.1
 - Fix logo color and crash on QR code generation for older devices
 
