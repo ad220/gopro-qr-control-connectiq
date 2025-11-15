@@ -32,6 +32,7 @@ class QROptionsDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     public function discard() as Void {
+        data.discard();
         getApp().returnHome();
     }
 
