@@ -5,13 +5,13 @@ import Toybox.Application;
 class LabsData {
 
     public var command as String;
-    public var params as Dictionary;
+    public var params as Dictionary<String, String>;
     public var matrix as Array<ByteArray>?;
 
     public function initialize(command as String?) {
         if (command != null) {
             self.command = command;
-            self.params = Application.Storage.getValue("paramsOf:"+command);
+            self.params = Application.Storage.getValue("paramsOf:"+command) as Dictionary<String, String>;
             self.matrix = [];
 
             var serializedMatrix = Application.Storage.getValue("matrixOf:"+command) as ByteArray;
@@ -21,15 +21,19 @@ class LabsData {
             }
         } else {
             self.command = "";
-            self.params = {};
+            self.params = {} as Dictionary<String, String>;
             self.matrix = null;
         }
     }
 
     
-    function setParam(key as String, value as String) {
+    function setParam(key as String, value as String) as Void {
         var paramCode = key.substring(1,3);
-        key = "707172".find(paramCode) == null ? key : "$73iso";
+        if (paramCode == null) {
+            return;
+        }
+
+        key = "707172".find(paramCode)==null ? key : "$73iso";
         var prevParam = params.get(key) as String?;
 
         if (key.equals("$73iso")) {
@@ -84,8 +88,13 @@ class LabsData {
         }
     }
 
-    function save() {
-        var qrcodes = Application.Storage.getValue("qrcodes") as Array;
+    function save() as Boolean {
+        if (matrix == null) {
+            System.println("Trying to save while matrix is null");
+            return false;
+        }
+
+        var qrcodes = Application.Storage.getValue("qrcodes") as Array<String>;
         if (qrcodes.indexOf(command) == -1) {
             qrcodes.add(command);
         }
@@ -94,14 +103,16 @@ class LabsData {
         for (var i=0; i<matrix.size(); i++) {
             serializedMatrix.addAll(matrix[i]);
         }
-
+        
         Application.Storage.setValue("qrcodes", qrcodes);
         Application.Storage.setValue("paramsOf:"+command, params);
         Application.Storage.setValue("matrixOf:"+command, serializedMatrix);
+
+        return true;
     }
 
-    function discard() {
-        var qrcodes = Application.Storage.getValue("qrcodes") as Array;
+    function discard() as Void {
+        var qrcodes = Application.Storage.getValue("qrcodes") as Array<String>;
         qrcodes.remove(command);
 
         Application.Storage.setValue("qrcodes", qrcodes);

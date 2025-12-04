@@ -9,9 +9,9 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
     public function initialize(menu as Menu2) {
         Menu2InputDelegate.initialize();
 
-        var qrcodes = Application.Storage.getValue("qrcodes") as Array?;
+        var qrcodes = Application.Storage.getValue("qrcodes") as Array<String>?;
         if (qrcodes == null) {
-            qrcodes = [];
+            qrcodes = [] as Array<String>;
             Application.Storage.setValue("qrcodes", qrcodes);
         }
 
@@ -28,7 +28,7 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
             :locY => LAYOUT_VALIGN_CENTER
         });
         for (var i=0; i<qrcodes.size(); i++) {
-            var label = qrcodes[i].substring(0, qrcodes[i].length());
+            var label = qrcodes[i].substring(0, qrcodes[i].length()) as String;
             if (label.length()>8) {
                 label = label.substring(0, 8) + "...";
             }
@@ -44,7 +44,7 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        var id = item.getId();
+        var id = item.getId() as String;
         if (id.equals("new")) {
             var data = new LabsData(null);
             var menu = new Rez.Menus.LabsMenu();
@@ -53,7 +53,7 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
             var menu = new Rez.Menus.AppSettings();
             switchToView(menu, new AppSettings(menu), SLIDE_LEFT);
         } else {
-            var data = new LabsData(item.getId());
+            var data = new LabsData(id);
             var view = new QRCodeView(data);
             switchToView(view, new QRCodeDelegate(view), SLIDE_LEFT);
         }

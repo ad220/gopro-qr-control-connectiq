@@ -4,7 +4,7 @@ import Toybox.WatchUi;
 
 using GFMath as GFM;
 
-(:glance)
+(:glance :typecheck(false))
 class QRControlApp extends Application.AppBase {
 
     function initialize() {
@@ -41,8 +41,8 @@ class QRControlApp extends Application.AppBase {
         return [ menu, new MainMenuDelegate(menu) ];
     }
 
-    function returnHome() {
-        var view = getHomeMenu() as Array;
+    function returnHome() as Void {
+        var view = getHomeMenu();
         WatchUi.switchToView(view[0], view[1], WatchUi.SLIDE_RIGHT);
     }
 }

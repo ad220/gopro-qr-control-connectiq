@@ -44,8 +44,10 @@ class LabsPickerDelegate extends Menu2InputDelegate {
             menu.deleteItem(0);
         }
 
-        var focus = menu.findItemById(data.params.get(key));
-        menu.setFocus(focus);
+        var value = data.params.get(key);
+        if (value != null) {
+            menu.setFocus(menu.findItemById(value));
+        }
     }
 
     public function onSelect(item as MenuItem) as Void {
@@ -65,9 +67,9 @@ class LabsPickerDelegate extends Menu2InputDelegate {
         if      (parentMenuId == :resolution)   { menu = new Rez.Menus.VideoSettings(); }
         else if (parentMenuId == :audio)        { menu = new Rez.Menus.ProtuneSettings(); }
         else if (parentMenuId == :camera)       { menu = new Rez.Menus.ExtendedControls(); }
-        menu.setFocus(parentFocus);
         
         if (menu instanceof Menu2) {
+            menu.setFocus(parentFocus);
             WatchUi.switchToView(menu, new LabsMenuDelegate(menu, data), SLIDE_RIGHT);
         }
     }

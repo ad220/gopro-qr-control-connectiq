@@ -22,35 +22,37 @@ class QRCode {
     private var processState as Number;
     private var maskIndex as Number;
     private var penaltyScore as Number;
-    private var codewords as ByteArray?;
-    private var codeMatrix as QRMatrix?;
+    private var codeWords as ByteArray;
+    private var codeMatrix as QRMatrix;
 
 // TODO: auto-ecc
     public function initialize(data as String, ecc as Char?, pregenMatrix as Array<ByteArray>?) {
         self.data = data;
-        self.ecc = ecc;
-        self.codeMatrix = pregenMatrix;
         self.version = 0;
         self.maxCodewords = 0;
         self.processState = 0;
         self.maskIndex = 0;
         self.penaltyScore = 0;
+        self.codeWords = []b;
         
         if (pregenMatrix == null) {
-            if (ecc == null) { setBestEcc(); }
+            self.ecc = ecc == null ? findBestEcc() : ecc;
             self.version = data.length()<20 ? 0 : 1;
             self.size = 21 + 4*version;
+            self.codeMatrix = [];
         } else {
+            self.ecc = 'L';
+            self.codeMatrix = pregenMatrix;
             self.size = codeMatrix.size();
             self.processState = PROCESSING_STEPS;
         }
     }
 
-    private function setBestEcc() as Void {
+    private function findBestEcc() as Char {
         var i = 0;
         while (CODEWORDS_TABLE[i] < data.length()) { i++; }
         maxCodewords = CODEWORDS_TABLE[i];
-        ecc = ECC_TABLE[i].toChar();
+        return ECC_TABLE[i].toChar();
     }
 
     public function compute() as Numeric {
@@ -84,22 +86,22 @@ class QRCode {
     private function makeCodewords() as Void {
         // String to bytes with mode(4)-length(8)-data(*) format
         var bytes = data.toCharArray();
-        codewords = [64 + (bytes.size()&0xF0 >> 4), bytes.size()&0x0F << 4]b;
+        codeWords = [64 + (bytes.size()&0xF0 >> 4), bytes.size()&0x0F << 4]b;
 
         for (var i=0; i<bytes.size(); i++) {
-            codewords[i+1] += bytes[i].toNumber() & 0xF0 >> 4;
-            codewords.add(bytes[i].toNumber() & 0x0F << 4);
+            codeWords[i+1] += bytes[i].toNumber() & 0xF0 >> 4;
+            codeWords.add(bytes[i].toNumber() & 0x0F << 4);
         }
 
-        while (codewords.size()<maxCodewords) {
-            codewords.add(codewords.size() & 1 ? 236 : 17);
+        while (codeWords.size()<maxCodewords) {
+            codeWords.add(codeWords.size() & 1 ? 236 : 17);
         }
         
         // Compute and append EDC
-        var msgPoly = codewords.slice(null, null);
+        var msgPoly = codeWords.slice(null, null);
         var totalLength = AVAILABLE_MODULES[version];
         while (msgPoly.size()<totalLength) {msgPoly.add(0);}
-        codewords.addAll(GFM.polyRest(msgPoly, GFM.GEN_POLYS[totalLength - codewords.size()]));
+        codeWords.addAll(GFM.polyRest(msgPoly, GFM.GEN_POLYS[totalLength - codeWords.size()]));
     }
 
     private function makeBaseMatrix() as Void {
@@ -113,7 +115,7 @@ class QRCode {
         placeCodewords(codeMatrix);
     }
 
-    private function reserveModules(matrix as QRMatrix) {
+    private function reserveModules(matrix as QRMatrix) as QRMatrix {
         fillRectangle(matrix, 0, 0, 9, 9, 1);
         fillRectangle(matrix, 0, size-8, 9, size, 1);
         fillRectangle(matrix, size-8, 0, size, 9, 1);
@@ -125,7 +127,14 @@ class QRCode {
         return matrix;
     }
 
-    private function fillRectangle(matrix as QRMatrix, xa, ya, xb, yb, value) {
+    private function fillRectangle(
+        matrix as QRMatrix,
+        xa as Number,
+        ya as Number,
+        xb as Number,
+        yb as Number,
+        value as Number
+    ) as Void {
         for (var i=xa; i<xb; i++) {
             for (var j=ya; j<yb; j++) {
                 matrix[i][j] = value;
@@ -133,15 +142,15 @@ class QRCode {
         }
     }
 
-    private function placeCodewords(matrix as QRMatrix) {
+    private function placeCodewords(matrix as QRMatrix) as Void {
         var rowStep = -1;
         var row = matrix.size() - 1;
         var column = row;
         var index = 0;
         var dataIndex = 0;
         while (column >= 0) {
-            if (matrix[row][column] == 0 and dataIndex < codewords.size()<<3) {
-                matrix[row][column] = (codewords[dataIndex/8] & (0x80>>(dataIndex%8))!=0 ? 1 : 0);
+            if (matrix[row][column] == 0 and dataIndex < codeWords.size()<<3) {
+                matrix[row][column] = (codeWords[dataIndex/8] & (0x80>>(dataIndex%8))!=0 ? 1 : 0);
                 dataIndex++;
             }
             
@@ -169,7 +178,7 @@ class QRCode {
         return copy;
     }
 
-    private function placeFinderPattern(matrix as QRMatrix, x, y) {
+    private function placeFinderPattern(matrix as QRMatrix, x as Number, y as Number) as Void {
         var finder = [
             [1,1,1,1,1,1,1]b,
             [1,0,0,0,0,0,1]b,
@@ -186,7 +195,7 @@ class QRCode {
         }
     }
 
-    private function placeAlignmentPattern(matrix as QRMatrix, x, y) {
+    private function placeAlignmentPattern(matrix as QRMatrix, x as Number, y as Number) as Void {
         var finder = [
             [1,1,1,1,1]b,
             [1,0,0,0,1]b,
@@ -201,13 +210,13 @@ class QRCode {
         }
     }
 
-    private function placeErrorMaskInfo(matrix as QRMatrix) {
+    private function placeErrorMaskInfo(matrix as QRMatrix) as Void {
         var EDC_ORDER = "MLHQ";
         var FORMAT_DIVISOR = [1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1]b;
         var FORMAT_MASK = [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]b;
 
         var formatPoly = []b;
-        var errorLevelIndex = EDC_ORDER.find(ecc.toString());
+        var errorLevelIndex = EDC_ORDER.find(ecc.toString()) as Number;
         formatPoly.add(errorLevelIndex >> 1);
         formatPoly.add(errorLevelIndex & 1);
         formatPoly.add(maskIndex >> 2);
@@ -235,7 +244,7 @@ class QRCode {
         }
     }
 
-    private function placePatterns(matrix as QRMatrix) {
+    private function placePatterns(matrix as QRMatrix) as Void {
         fillRectangle(matrix, 0, 7, 9, 9, 0);
         fillRectangle(matrix, 7, 0, 9, 7, 0);
         fillRectangle(matrix, size-8, 0, size-7, 8, 0);
@@ -253,39 +262,39 @@ class QRCode {
         matrix[size-8][8] = 1;
     }
 
-    public function mask0(row, column) as Number {
+    public function mask0(row as Number, column as Number) as Number {
         return (row + column + 1) & 1;
     }
 
-    public function mask1(row, column) as Number {
+    public function mask1(row as Number, column as Number) as Number {
         return row & 1 ^ 1;
     }
 
-    public function mask2(row, column) as Number {
+    public function mask2(row as Number, column as Number) as Number {
         return column % 3 ? 0 : 1;
     }
 
-    public function mask3(row, column) as Number {
+    public function mask3(row as Number, column as Number) as Number {
         return (row+column) % 3 ? 0 : 1;
     }
     
-    public function mask4(row, column) as Number {
+    public function mask4(row as Number, column as Number) as Number {
         return (row/2 + column/3) % 2 ? 0 : 1;
     }
 
-    public function mask5(row, column) as Number {
+    public function mask5(row as Number, column as Number) as Number {
         return row*column%2 + row*column%3 ? 0 : 1;
     }
     
-    public function mask6(row, column) as Number {
+    public function mask6(row as Number, column as Number) as Number {
         return ((row*column)%2 + row*column%3) % 2 ? 0 : 1;
     }
     
-    public function mask7(row, column) as Number {
+    public function mask7(row as Number, column as Number) as Number {
         return ((row+column)%2 + row*column%3) % 2 ? 0 : 1;
     }
 
-    private function applyMask(matrix as QRMatrix, mask as Number) {
+    private function applyMask(matrix as QRMatrix, mask as Number) as Void {
         var maskFunction = method([:mask0, :mask1, :mask2, :mask3, :mask4, :mask5, :mask6, :mask7][mask]);
         for (var i=0; i<size; i++) {
             for (var j=0; j<size; j++) {

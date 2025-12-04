@@ -26,6 +26,7 @@
     <string id="ConfirmLong">Trop de paramètres\nsélectionnés, impossible\nde créer le QR code.</string>
     <string id="ConfirmBack">Vous perdrez\nvos modifications !\nConfirmer ?</string>
     <string id="ConfirmDiscard">Supprimer les\n les données de ce\n QR code ?</string>
+    <string id="ConfirmSaveNull">Impossible de\nsauvegarder, le QR\ncode est vide !</string>
 
 
     <!-- QR Control menus -->

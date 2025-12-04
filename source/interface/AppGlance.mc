@@ -10,7 +10,7 @@ class AppGlance extends WatchUi.GlanceView {
     public function initialize() {
         GlanceView.initialize();
 
-        self.title = loadResource(Rez.Strings.AppName);
+        self.title = loadResource(Rez.Strings.AppName) as String;
     }
 
     public function onUpdate(dc as Dc) as Void {

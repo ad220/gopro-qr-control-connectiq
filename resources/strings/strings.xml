@@ -26,6 +26,7 @@
     <string id="ConfirmLong">Can't generate\nQR, the command\nis too long.</string>
     <string id="ConfirmBack">Going back\nwill discard\nchanges!\nConfirm?</string>
     <string id="ConfirmDiscard">Discard this\nQR code\ndata?</string>
+    <string id="ConfirmSaveNull">Can't save,\nthere is no data\nin this QR code!</string>
 
 
     <!-- QR Control menus -->
