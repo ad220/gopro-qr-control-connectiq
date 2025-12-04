@@ -31,7 +31,7 @@ class QRCodeView extends WatchUi.View {
             var width = dc.getWidth();
             var height = dc.getHeight();
 
-            dc.drawBitmap(0.4*width, 0.4*height, loadResource(Rez.Drawables.LoadingQR));
+            dc.drawBitmap(0.4*width, 0.4*height, loadResource(Rez.Drawables.LoadingQR) as BitmapType);
             
             var progress = 0;
             if (GFMath.GEN_POLYS.size()<29) {

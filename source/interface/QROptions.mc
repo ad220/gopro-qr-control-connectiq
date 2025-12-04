@@ -19,8 +19,15 @@ class QROptionsDelegate extends WatchUi.Menu2InputDelegate {
             switchToView(menu, new LabsMenuDelegate(menu, data), SLIDE_RIGHT);
         }
         else if (id == :save) {
-            data.save();
-            getApp().returnHome();
+            if (data.save()) {
+                getApp().returnHome();
+            } else {
+                pushView(
+                    new ConfirmView(Rez.Strings.ConfirmDiscard),
+                    null,
+                    SLIDE_DOWN
+                );
+            }
         }
         else if (id == :discard) {
             pushView(

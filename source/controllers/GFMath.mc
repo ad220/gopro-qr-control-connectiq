@@ -25,21 +25,24 @@ module GFMath {
         GEN_POLYS.add(polyMul(GEN_POLYS[deg-1], [1, EXP[deg-1]]b));
     }
 
-    function mul(a, b) {
+    (:typecheck(false))
+    function mul(a as Char, b as Char) as Char {
         return a!=0 && b!=0 ? EXP[(LOG[a] + LOG[b]) % 255] : 0;
     }
 
-    function div(a, b) {
+    (:typecheck(false))
+    function div(a as Char, b as Char) as Char {
         return EXP[(LOG[a] + LOG[b] * 254) % 255];
     }
 
+    
     function polyMul(polyA as ByteArray, polyB as ByteArray) as ByteArray {
         var coeffs = []b;
         for (var i=0; i<polyA.size()+polyB.size()-1; i++) {
             coeffs.add(0);
             for (var j=0; j<=i; j++) {
                 if (j<polyA.size() and i-j<polyB.size()) {
-                    coeffs[i] ^= mul(polyA[j], polyB[i-j]);
+                    coeffs[i] ^= mul(polyA[j] as Char, polyB[i-j] as Char) as Number;
                 }
             }
         }
@@ -51,7 +54,7 @@ module GFMath {
         var quotientLength = dividend.size()-divisor.size()+1;
         for (var i=0; i<quotientLength; i++) {
             if (rest[0]!=0) {
-                var factor = div(rest[0], divisor[0]);
+                var factor = div(rest[0] as Char, divisor[0] as Char);
                 var subtr = polyMul(divisor, [factor]b);
                 while (subtr.size()<rest.size()) {subtr.add(0);}
                 for (var j=0; j<rest.size(); j++) {

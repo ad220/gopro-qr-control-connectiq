@@ -61,7 +61,7 @@ class NumInputView extends WatchUi.View {
     }
 
 
-    public function addNumber(n as Number) {
+    public function addNumber(n as Number) as Void {
         if (n != -1) {
             if (input == null) { input = 0; }
             if (input < 99999) { // max 6 digits
@@ -69,7 +69,8 @@ class NumInputView extends WatchUi.View {
                 inputLabel.setText(input.toString());
             }
         } else {
-            if (input>9) {
+            if (input == null) { return; }
+            else if (input > 9) {
                 input /= 10;
                 inputLabel.setText(input.toString());
             } else {
@@ -79,7 +80,7 @@ class NumInputView extends WatchUi.View {
         }
     }
 
-    public function setHilighted(button as NumButton, onSelect as Boolean) {
+    public function setHilighted(button as NumButton, onSelect as Boolean) as Void {
         if (hilighted != button) {
             hilighted.setState(:stateDefault);
             mKeyToSelectable = (12 - button.getValue()) % 12;

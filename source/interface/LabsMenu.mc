@@ -19,7 +19,7 @@ class LabsMenuDelegate extends Menu2InputDelegate {
     public function onSelect(item as MenuItem) as Void {
         var menu = null;
         var key = "";
-        var id = item.getId();
+        var id = item.getId() as Symbol;
         if      (firstItemId == :video) {
             if      (id==:video)        { menu = new Rez.Menus.VideoSettings(); }
             else if (id==:protune)      { menu = new Rez.Menus.ProtuneSettings(); }
@@ -91,12 +91,10 @@ class LabsMenuDelegate extends Menu2InputDelegate {
                 ? new LabsMenuDelegate(menu, data)
                 : new LabsPickerDelegate(menu, data, key, firstItemId, self.menu.findItemById(id));
             WatchUi.switchToView(menu, delegate, SLIDE_LEFT);
-        } else {
-            if (menu instanceof ConfirmView) {
-                pushView(menu, new ConfirmDelegate(null), SLIDE_UP);
-            } else {
-                switchToView(menu, new QRCodeDelegate(menu), SLIDE_LEFT);
-            }
+        } else if (menu instanceof ConfirmView) {
+            pushView(menu, new ConfirmDelegate(null), SLIDE_UP);
+        } else if (menu instanceof QRCodeView) {
+            switchToView(menu, new QRCodeDelegate(menu), SLIDE_LEFT);
         }
     }
 

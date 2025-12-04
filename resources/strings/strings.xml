@@ -1,5 +1,5 @@
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <string id="AppName">QR Control</string>
+    <string id="AppName" scope="glance">QR Control</string>
 
     <string id="Start">Start</string>
 
@@ -26,6 +26,7 @@
     <string id="ConfirmLong">Can't generate\nQR, the command\nis too long.</string>
     <string id="ConfirmBack">Going back\nwill discard\nchanges!\nConfirm?</string>
     <string id="ConfirmDiscard">Discard this\nQR code\ndata?</string>
+    <string id="ConfirmSaveNull">Can't save,\nthere is no data\nin this QR code!</string>
 
 
     <!-- QR Control menus -->

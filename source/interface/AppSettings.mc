@@ -5,26 +5,34 @@ import Toybox.Application;
 
 class AppSettings extends WatchUi.Menu2InputDelegate {
 
-    (:initialized) private static var settings as Dictionary;
+    (:initialized) private static var settings as Dictionary<String,Boolean>;
 
-    public static function init() {
-        settings = Application.Storage.getValue("settings") as Dictionary?;
-        var def = Application.loadResource(Rez.JsonData.DefaultSettings) as Dictionary;
-        if (settings == null) {
-            settings = def;
-        } else if (settings.get("version") as Number < def.get("version") as Number) {
-            var keys = settings.keys();
+    public static function init() as Void {
+        var result = Application.Storage.getValue("settings") as Dictionary<String, Boolean>?;
+        var def = Application.loadResource(Rez.JsonData.DefaultSettings) as Dictionary<String, Boolean>;
+        if (result == null) {
+            result = def;
+        } else if (result.get("version") as Number < def.get("version") as Number) {
+            var keys = result.keys();
             for (var i=0; i<keys.size(); i++) {
                 if (keys[i] != "version" and def.hasKey(keys[i])) {
-                    def.put(keys[i], settings.get(keys[i]));
+                    def.put(keys[i], result.get(keys[i]) as Boolean);
                 }
             }
-            settings = def;
+            result = def;
         }
+        settings = result;
     }
 
-    public static function get(key as String) {
-        return settings.get(key);
+    public static function get(key as String?) as Boolean {
+        if (key == null) { return false; }
+
+        var result = settings.get(key);
+        if (result == null) {
+            System.println("Unknown setting key");
+            return false;
+        }
+        return result;
     }
 
 
@@ -34,7 +42,7 @@ class AppSettings extends WatchUi.Menu2InputDelegate {
         var i = 0; 
         var item = menu.getItem(i) as ToggleMenuItem?;
         while (item != null) {
-            var id = item.getSubLabel();
+            var id = item.getSubLabel() as String;
             item.initialize(item.getLabel(), null, id, settings.get(id) as Boolean, null);
             menu.updateItem(item, i);
 
@@ -45,7 +53,7 @@ class AppSettings extends WatchUi.Menu2InputDelegate {
 
     public function onSelect(item as MenuItem) as Void {
         if (item instanceof ToggleMenuItem) {
-            settings.put(item.getId(), item.isEnabled());
+            settings.put(item.getId() as String, item.isEnabled());
         }
     }
 
