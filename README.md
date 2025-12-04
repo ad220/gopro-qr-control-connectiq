@@ -30,6 +30,9 @@ All the different parameters should be described in [doc/LABS.md](doc/LABS.md), 
 
 ## Changelog
 
+### v1.3
+- Add glance view
+
 ### v1.2
 - Fix removing a saved qr code
 - Fix qr code loading for older devices
