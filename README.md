@@ -11,7 +11,7 @@ A ConnectIQ widget which can generate QR codes to control a Labs enabled GoPro c
 
 
 ## Installation
-The widget is available on the [Garmin Connect IQ store](https://apps.garmin.com/apps/0bffb1af-6f08-4cd5-bae0-3dc82edbb6ff). You can install it directly from your Garmin Connect app on your smartphone.
+The widget is available on the [Garmin Connect IQ store](https://apps.garmin.com/apps/3d483b55-7a79-4fad-a6cc-aa8ce19924e1). You can install it directly from your Garmin Connect app on your smartphone.
 
 
 ## How to use it
