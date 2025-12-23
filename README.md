@@ -18,7 +18,7 @@ The widget probably won't be available on the [Garmin Connect IQ store](https://
 2. Connect your watch to your computer using a USB cable
 3. Find your device in Garmin's [Device Reference](https://developer.garmin.com/connect-iq/device-reference/)
 4. Scroll down to "Part Number" and write it down
-5. Unzip the .iq release file (it works with WinRAR)
+5. Unzip the .iq release file (it works with 7Zip)
 6. Open the folder named after your part number
 7. Copy the .prg file to your device's "GARMIN/APPS" directory
 
