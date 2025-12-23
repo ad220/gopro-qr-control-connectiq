@@ -11,10 +11,10 @@ A ConnectIQ widget which can generate QR codes to control a Labs enabled GoPro c
 
 
 ## Installation
-The widget probably won't be available on the [Garmin Connect IQ store](https://apps.garmin.com/apps/3d483b55-7a79-4fad-a6cc-aa8ce19924e1) because according to GoPro "Labs is an experimental platform and is not to be consumer facing". Thus, you will have to install (side-load) it from the GitHub released iq file or to build it yourself from the source. Instructions for the latter are provided in Garmin's [documentation](https://developer.garmin.com/connect-iq/connect-iq-basics/).
+The widget probably won't be available on the [Garmin Connect IQ store](https://apps.garmin.com/apps/3d483b55-7a79-4fad-a6cc-aa8ce19924e1) because according to GoPro, "Labs is an experimental platform and is not to be consumer facing". Thus, you will have to install (side-load) it from the GitHub released iq file or to build it yourself from the source. Instructions for the latter are provided in Garmin's [documentation](https://developer.garmin.com/connect-iq/connect-iq-basics/).
 
 ### Install from a GitHub release
-1. Download latest release from GitHub
+1. Download [latest release](https://github.com/ad220/gopro-qr-control-connectiq/releases/latest) from GitHub
 2. Connect your watch to your computer using a USB cable
 3. Find your device in Garmin's [Device Reference](https://developer.garmin.com/connect-iq/device-reference/)
 4. Scroll down to "Part Number" and write it down
