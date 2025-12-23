@@ -9,7 +9,7 @@ class QRCode {
     typedef QRMatrix as Array<ByteArray>;
 
     private const AVAILABLE_MODULES = [26, 44]b;
-    private const CODEWORDS_TABLE   = [  9,  13,  16,  19,  22,  28,  34]b;
+    private const CODEWORDS_TABLE   = [  7,  11,  14,  17,  20,  26,  32]b;
     private const ECC_TABLE         = ['H', 'Q', 'M', 'L', 'Q', 'M', 'L']b;
 
     private const PROCESSING_STEPS = 10;
@@ -52,6 +52,8 @@ class QRCode {
         var i = 0;
         while (CODEWORDS_TABLE[i] < data.length()) { i++; }
         maxCodewords = CODEWORDS_TABLE[i];
+        System.println(data.length());
+        System.println(maxCodewords);
         return ECC_TABLE[i].toChar();
     }
 

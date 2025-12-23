@@ -11,8 +11,16 @@ A ConnectIQ widget which can generate QR codes to control a Labs enabled GoPro c
 
 
 ## Installation
-The widget is available on the [Garmin Connect IQ store](https://apps.garmin.com/apps/3d483b55-7a79-4fad-a6cc-aa8ce19924e1). You can install it directly from your Garmin Connect app on your smartphone.
+The widget probably won't be available on the [Garmin Connect IQ store](https://apps.garmin.com/apps/3d483b55-7a79-4fad-a6cc-aa8ce19924e1) because according to GoPro, "Labs is an experimental platform and is not to be consumer facing". Thus, you will have to install (side-load) it from the GitHub released iq file or to build it yourself from the source. Instructions for the latter are provided in Garmin's [documentation](https://developer.garmin.com/connect-iq/connect-iq-basics/).
 
+### Install from a GitHub release
+1. Download [latest release](https://github.com/ad220/gopro-qr-control-connectiq/releases/latest) from GitHub
+2. Connect your watch to your computer using a USB cable
+3. Find your device in Garmin's [Device Reference](https://developer.garmin.com/connect-iq/device-reference/)
+4. Scroll down to "Part Number" and write it down
+5. Unzip the .iq release file (it works with WinRAR)
+6. Open the folder named after your part number
+7. Copy the .prg file to your device's "GARMIN/APPS" directory
 
 ## How to use it
 The user interface is pretty straight-forward: press new qr code to enter the settings menu. There you can select any setting to pass to the gopro when it will scan the qr code. Generating the first qr code after starting the app takes a bit longer than the next ones. On my end with a Forerunner 955, it never took longer than 15 seconds. Once generated, you can save the code so that it will almost show up instantly next time you need it.
